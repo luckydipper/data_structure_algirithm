@@ -19,8 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="chapter2_reculsive.c" />
-    <ClCompile Include="hanoi.c" />
+    <ClCompile Include="chapter3_linked_list.c" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

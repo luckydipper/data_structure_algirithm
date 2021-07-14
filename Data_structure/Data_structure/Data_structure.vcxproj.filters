@@ -15,10 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="chapter2_reculsive.c">
-      <Filter>Resource Files</Filter>
-    </ClCompile>
-    <ClCompile Include="hanoi.c">
+    <ClCompile Include="chapter3_linked_list.c">
       <Filter>Resource Files</Filter>
     </ClCompile>
   </ItemGroup>
