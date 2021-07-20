@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="chapter4_linked_list.c">
+    <ClCompile Include="cpp_r_value_ref_const.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
   </ItemGroup>
