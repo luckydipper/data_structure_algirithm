@@ -37,6 +37,9 @@ void LinkedListInit(LinkedList* p_linked_lisk)
 void PushBack(LinkedList* p_linked, int data)
 {
     Node *p_new_node = (Node*)malloc(sizeof(Node));
+    
+    assert(p_new_node != NULL);
+
     p_new_node->data = data;
     p_new_node->p_next_node = NULL;
 
@@ -62,10 +65,11 @@ void PopFront(LinkedList* p_linked)
 
 void DeleteList(LinkedList* p_linked)
 {
-    while (p_linked->p_header_node != NULL)
+    p_linked->p_current_node = p_linked->p_header_node;
+    while (p_linked->p_current_node != NULL)
     {
-        Node *delete_note = p_linked->p_header_node;
-        p_linked->p_header_node = p_linked->p_header_node->p_next_node;
+        Node *delete_note = p_linked->p_current_node;
+        p_linked->p_current_node = p_linked->p_current_node->p_next_node;
         free(delete_note);
     }
     p_linked->list_lenth = 0;

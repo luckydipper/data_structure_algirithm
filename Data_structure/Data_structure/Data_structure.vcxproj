@@ -19,7 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="cpp_r_value_ref_const.cpp" />
+    <ClCompile Include="chapter3_linked_llist.c" />
+    <ClCompile Include="unicode.c" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

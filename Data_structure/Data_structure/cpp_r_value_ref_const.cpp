@@ -18,11 +18,13 @@ int function(int const const_parapm)
 
 int main()
 {
-    int return_value = function(5);
+    //int return_value = function(5);
 
-    return_value = 4;
+    //return_value = 4;
     const int* p_var = returning_pointer();
-    std::cout << p_var << std::endl;
-    std::cout << return_value;
+    // *p_var = 5; const라서 바꿀 수는 없다. 그런데 궂이 pointer를 return해서 써야하는가?
+    // malloc같은 것을 return해주는 interface면 필요할 것 같다.
+    std::cout << *p_var+1 << std::endl;
+    //std::cout << return_value;
     return 0;
 }
