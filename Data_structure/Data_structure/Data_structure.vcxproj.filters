@@ -18,8 +18,16 @@
     <ClCompile Include="unicode.c">
       <Filter>Resource Files</Filter>
     </ClCompile>
-    <ClCompile Include="chapter3_linked_llist.c">
+    <ClCompile Include="turn_by_reference_const_type.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
+    <ClCompile Include="return_by.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="turn_by_reference_const_type.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

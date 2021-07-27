@@ -19,8 +19,12 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="chapter3_linked_llist.c" />
+    <ClCompile Include="return_by.cpp" />
+    <ClCompile Include="turn_by_reference_const_type.cpp" />
     <ClCompile Include="unicode.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="turn_by_reference_const_type.hpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
