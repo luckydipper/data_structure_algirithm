@@ -89,34 +89,34 @@ void printList(LinkedList* p_linked)
 }
 
 // ui printf("Give me push back value\n");
-int main()
-{
-    LinkedList student_score;
-    
-    // initialize using constructor
-    LinkedListInit(&student_score);
-    
-    PushBack(&student_score, 16);
-    PushBack(&student_score, 14);
-    PushBack(&student_score, 19);
-    PushBack(&student_score, 165);
-
-    printList(&student_score);
-    
-    PopFront(&student_score);
-    PopFront(&student_score);
-    PopFront(&student_score);
-    PopFront(&student_score);
-
-    //PushBack(&student_score, 16);
-    //PushBack(&student_score, 14);
-    //PushBack(&student_score, 19);
-    //PushBack(&student_score, 16);
-    //PushBack(&student_score, 14);
-    //PushBack(&student_score, 19);
-    //PushBack(&student_score, 165);
-    //PushBack(&student_score, 165);
-    //printList(&student_score);
-    //DeleteList(&student_score);
-    return 0;
-}
+//int main()
+//{
+//    LinkedList student_score;
+//    
+//    // initialize using constructor
+//    LinkedListInit(&student_score);
+//    
+//    PushBack(&student_score, 16);
+//    PushBack(&student_score, 14);
+//    PushBack(&student_score, 19);
+//    PushBack(&student_score, 165);
+//
+//    printList(&student_score);
+//    
+//    PopFront(&student_score);
+//    PopFront(&student_score);
+//    PopFront(&student_score);
+//    PopFront(&student_score);
+//
+//    //PushBack(&student_score, 16);
+//    //PushBack(&student_score, 14);
+//    //PushBack(&student_score, 19);
+//    //PushBack(&student_score, 16);
+//    //PushBack(&student_score, 14);
+//    //PushBack(&student_score, 19);
+//    //PushBack(&student_score, 165);
+//    //PushBack(&student_score, 165);
+//    //printList(&student_score);
+//    //DeleteList(&student_score);
+//    return 0;
+//}

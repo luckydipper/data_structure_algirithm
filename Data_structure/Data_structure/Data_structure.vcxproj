@@ -19,6 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="chapter3_linked_llist.c" />
+    <ClCompile Include="chapter4_linked_list.c" />
     <ClCompile Include="return_by.cpp" />
     <ClCompile Include="turn_by_reference_const_type.cpp" />
     <ClCompile Include="unicode.c" />

@@ -15,14 +15,20 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="unicode.c">
-      <Filter>Resource Files</Filter>
-    </ClCompile>
-    <ClCompile Include="turn_by_reference_const_type.cpp">
-      <Filter>Resource Files</Filter>
+    <ClCompile Include="chapter3_linked_llist.c">
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="return_by.cpp">
-      <Filter>Resource Files</Filter>
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="turn_by_reference_const_type.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="unicode.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="chapter4_linked_list.c">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
