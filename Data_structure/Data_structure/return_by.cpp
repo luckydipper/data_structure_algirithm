@@ -4,6 +4,8 @@
 
 int wmain(int argc, char* argv[])
 {
+    int a = 1, b = 2;
+    int c = a + b;
     Point p1(1, 2);
     Point p2(0, 1);
     //(p1 + p2)++;// ++가 const method가 아니기 때문에 불가능 함.
