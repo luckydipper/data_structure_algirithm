@@ -15,10 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="windows.cpp">
-      <Filter>Resource Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Operation2.cpp">
+    <ClCompile Include="windows2.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
   </ItemGroup>
