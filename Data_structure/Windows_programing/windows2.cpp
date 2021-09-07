@@ -6,6 +6,14 @@
 int StackPointerResgister();
 int StackPointer2();
 
+
+
+DWORD WINAPI ThreadProcess(LPVOID lpParam)
+{
+    DWORD threadNum = (DWORD)lpParam;
+
+}
+
 // _tmain은 wmain과 main을 섞어서 호환하여 사용하기 위해, 마소가 만든 것.
 // ANCI에서 만든 c++에는 추가되있지 않아.
 int main(int argc, char* argv[])
@@ -13,7 +21,7 @@ int main(int argc, char* argv[])
     int student_score[30] = { 0 };
     int first{ 0 };
     int second{ 1 };
-
+    
 
     // 이럴바에는 element 기반 for를 쓰지 말자.
     // index는 안에 넣는게 좋다.
