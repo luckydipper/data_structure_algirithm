@@ -1,7 +1,6 @@
 // exercise_28.h
-// TODO : change Add Substract free memory.
-// TODO : 임시로 static 처리 해둠. 임시 객채로 return 할 수 있도록,
-// TODO : operator+와 같은 느낌으로 만들기
+// TODO : Add Substract 메모리 해제 문제 해결
+// TODO : operator+와 같은 느낌으로, 임시 객체를 return하도록 만들기
 #pragma once
 #include <iostream>
 
@@ -9,49 +8,41 @@
 #define _TESTTEMP_H_
 
 
-// Client should use MakeEmpty method to initialize
-// ex)
-// SquareMatrix two_by_two;
-// two_by_two.MakeEmpty(2)
+// 객체를 만든 후, 반드시 MakeEmpty(생성자 대신)으로 초기화해야합니다.
 template<typename T>
 class SquareMatrix {
-    // buffer size = x_y_lenth_ * x_y_lenth_ * sizeof(T)
     int x_y_lenth_;
-
     T** ptr_array;
 
 public:
     explicit SquareMatrix() = default;
-    // explicit SquareMatrix();
 
-    // SquareMatrix(int lenth, int element) : x_y_lenth(lenth);
     ~SquareMatrix();
 
     // alike constructor, make n by n empty array
-    // using dynamic allocation
+    // using dynamic allocation.
     void MakeEmpty(const int n);
 
-    // change index (i+1, j+1) to parameter value 
+    // change index (i+1, j+1) to parameter value.
     void StoreValue(const int i, const int j, T const value);
 
     // !caution! operand lenth must be same with caller matrix lenth
     // !caution! this method return temporal object. save return value!
-    // 내부를 건들이지 않는 임시 객체를 만들어서 return 함.
-    // free 과정에서도 오류가 있음.
-    // 생성자에서 malloc을 쓰는 것이 익숙한데 method에서 쓰니 힘듬.
+    // !caution! free 과정에 오류가 있음.
+    // operator+과 똑같게 구현하고 싶음.
     const SquareMatrix Add(const SquareMatrix& matrix) const;
 
     // !caution! operand lenth must be same with caller matrix lenth
-    // !caution! this method return temporal object
-    // 내부를 건들이지 않는 임시 객체를 만들어서 return 함.
-    // free 과정에서도 오류가 있음. 
-    // 생성자에서 malloc을 쓰는 것이 익숙한데 method에서 쓰니 힘듬.
-    SquareMatrix Subtract(const SquareMatrix& matrix) const;
+    // !caution! this method return temporal object. save return value!
+    // !caution! free 과정에 오류가 있음.
+    // operator-과 똑같게 구현하고 싶음.
+    const SquareMatrix Subtract(const SquareMatrix& matrix) const;
 
-    // !caution! operand lenth must be same with caller matrix lenth
+    // !caution! operand length must be same with caller matrix lenth
     void Copy(const SquareMatrix& matrix);
 
-    // get index 
+    // Get index value. 
+    // 2차원 배열이라 pointer type이 올 수도, T type이 올 수도 있어서, auto 반환.
     auto operator[](const int index) const;
 };
 #endif

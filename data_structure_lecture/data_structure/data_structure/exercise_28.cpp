@@ -1,5 +1,4 @@
-// exercise_28.cpp
-
+// exercise_28.cpp  
 #include "exercise_28.h"
 
 template<typename T>
@@ -35,11 +34,29 @@ void SquareMatrix<T>::StoreValue(const int i, const int j, T const value)
 template<typename T>
 const SquareMatrix<T> SquareMatrix<T>::Add(const SquareMatrix& matrix) const
 {
+    // 임시 객체를 반환함.
     SquareMatrix<T> temp_array;
-    //SquareMatrix<T>* prt_temp_array = new SquareMatrix<T>;
-    //SquareMatrix<T> temp_array = *prt_temp_array;
     temp_array.MakeEmpty(x_y_lenth_);
 
+    // 각 요소끼리 더함
+    for (int row_index = 0; row_index < x_y_lenth_; row_index++)
+        for (int col_index = 0; col_index < x_y_lenth_; col_index++)
+            temp_array[row_index][col_index] = ptr_array[row_index][col_index] + matrix[row_index][col_index];
+
+    // return 과정에서 소멸자가 호출되서 안 된다.
+    // 그대로 return 하는 방법이 없나?
+    return temp_array;
+}
+
+
+template<typename T>
+const SquareMatrix<T> SquareMatrix<T>::Subtract(const SquareMatrix& matrix) const
+{
+    // 임시 객체를 반환함.
+    SquareMatrix<T> temp_array;
+    temp_array.MakeEmpty(x_y_lenth_);
+
+    // 각 요소끼리 뺌.
     for (int row_index = 0; row_index < x_y_lenth_; row_index++)
         for (int col_index = 0; col_index < x_y_lenth_; col_index++)
             temp_array[row_index][col_index] = ptr_array[row_index][col_index] + matrix[row_index][col_index];
@@ -47,27 +64,10 @@ const SquareMatrix<T> SquareMatrix<T>::Add(const SquareMatrix& matrix) const
     return temp_array;
 }
 
-
-template<typename T>
-SquareMatrix<T> SquareMatrix<T>::Subtract(const SquareMatrix& matrix) const
-{
-    SquareMatrix<T> temp_array;
-    temp_array.MakeEmpty(x_y_lenth_);
-
-    // substract each element
-    for (int row_index = 0; row_index < x_y_lenth_; row_index++)
-        for (int col_index = 0; col_index < x_y_lenth_; col_index++)
-            temp_array[row_index][col_index] = ptr_array[row_index][col_index] - matrix[row_index][col_index];
-
-    return temp_array;
-}
-
 template<typename T>
 void SquareMatrix<T>::Copy(const SquareMatrix& matrix)
-{
-    (*this).MakeEmpty(matrix.x_y_lenth_);
-    
-    //copy each element
+{   
+    // copy each element
     for (int row_index = 0; row_index < x_y_lenth_; row_index++)
         for (int col_index = 0; col_index < x_y_lenth_; col_index++)
             ptr_array[row_index][col_index] = matrix.ptr_array[row_index][col_index];
