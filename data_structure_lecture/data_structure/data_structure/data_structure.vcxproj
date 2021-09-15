@@ -141,11 +141,15 @@
   <ItemGroup>
     <ClCompile Include="exercise_14.cpp" />
     <ClCompile Include="exercise_28.cpp" />
-    <ClCompile Include="exercise_28_test.cpp" />
     <ClCompile Include="exercise_29.cpp" />
+    <ClCompile Include="exercise_9.cpp" />
+    <ClCompile Include="ItemType.cpp" />
+    <ClCompile Include="unsorted.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="exercise_28.h" />
+    <ClInclude Include="ItemType.h" />
+    <ClInclude Include="unsorted.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -22,5 +22,6 @@ int main() {
     // 함수에서 local variable을 return 해도 const면 유지 될 줄 알았는데...
     // 객체를 return 과정에서 소멸자 두번 호출. Add와 subtract는 보완해야합니다!
     //square3 = 
-    square2.Add(square1); // 이 줄을 주석처리 하면 실행 됩니다!
+    //square2.Add(square1); // 이 줄을 주석처리 하면 실행 됩니다!
+    printf("hello world");
 }
