@@ -18,6 +18,17 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Client.cpp" />
+    <ClCompile Include="ItemType.cpp" />
+    <ClCompile Include="sorted.cpp" />
+    <ClCompile Include="StrTypeAugmented.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ItemType.h" />
+    <ClInclude Include="sorted.h" />
+    <ClInclude Include="StrTypeAugmented.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
@@ -138,19 +149,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="exercise_14.cpp" />
-    <ClCompile Include="exercise_28.cpp" />
-    <ClCompile Include="exercise_29.cpp" />
-    <ClCompile Include="exercise_9.cpp" />
-    <ClCompile Include="ItemType.cpp" />
-    <ClCompile Include="unsorted.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="exercise_28.h" />
-    <ClInclude Include="ItemType.h" />
-    <ClInclude Include="unsorted.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

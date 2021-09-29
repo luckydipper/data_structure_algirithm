@@ -15,33 +15,27 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="exercise_28.cpp">
-      <Filter>Resource Files</Filter>
+    <ClCompile Include="Client.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="exercise_14.cpp">
-      <Filter>Resource Files</Filter>
+    <ClCompile Include="sorted.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="exercise_29.cpp">
-      <Filter>Resource Files</Filter>
-    </ClCompile>
-    <ClCompile Include="exercise_9.cpp">
-      <Filter>Resource Files</Filter>
-    </ClCompile>
-    <ClCompile Include="unsorted.cpp">
-      <Filter>Resource Files</Filter>
+    <ClCompile Include="StrTypeAugmented.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ItemType.cpp">
-      <Filter>Resource Files</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="exercise_28.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="unsorted.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="ItemType.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="sorted.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StrTypeAugmented.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

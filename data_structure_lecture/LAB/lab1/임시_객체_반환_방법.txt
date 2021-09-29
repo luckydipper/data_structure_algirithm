@@ -1,0 +1,9 @@
+    // temp_array.MakeEmpty(x_y_lenth_);
+    // temp_array.Copy(matrix);
+    //
+    // static SquareMatrix<T> temp_array;
+    // temp_array.MakeEmpty(x_y_lenth_);
+    // 
+    // SquareMatrix<T>* prt_temp_array = new SquareMatrix<T>;
+    // SquareMatrix<T> temp_array = *prt_temp_array;
+    // temp_array.MakeEmpty(x_y_lenth_);
