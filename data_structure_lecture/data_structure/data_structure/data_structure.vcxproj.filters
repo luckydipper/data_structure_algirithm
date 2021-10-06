@@ -15,28 +15,8 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Client.cpp">
+    <ClCompile Include="..\..\LAB\lab4\2번\lab4_2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="sorted.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="StrTypeAugmented.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ItemType.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="ItemType.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="sorted.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="StrTypeAugmented.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>
