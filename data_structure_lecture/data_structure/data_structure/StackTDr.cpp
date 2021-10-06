@@ -47,17 +47,22 @@ void PrintStack(StackType<T> elem)
 int main()
 {
 	StackType<int> stack1;
-	for (int i = 0; i < 5; i++)
+	for (int i = 1; i < 7; i++)
 		stack1.Push(i);
 
-	StackType<int> stack2;
-	for (int i = 5; i > 0; i--)
-		stack2.Push(i);
+	for (int i = 1; i < 7; i++)
+	{
+		cout << stack1.Top() <<endl;
+		stack1.Pop();
+	}
+	//StackType<int> stack2;
+	//for (int i = 5; i > 0; i--)
+	//	stack2.Push(i);
 
-	StackType<int> stack3;
+	//StackType<int> stack3;
 
-	Copy<int>(stack2, stack3);
-	PrintStack(stack3);
+	//Copy<int>(stack2, stack3);
+	//PrintStack(stack3);
 
 
 

@@ -19,7 +19,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\LAB\lab4\2번\lab4_2.cpp" />
+    <ClCompile Include="StackTDr.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="StackTType.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
