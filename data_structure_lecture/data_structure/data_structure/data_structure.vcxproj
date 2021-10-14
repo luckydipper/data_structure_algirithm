@@ -19,10 +19,11 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="StackTDr.cpp" />
+    <ClInclude Include="counted_queue.hpp" />
+    <ClInclude Include="QueType.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="StackTType.h" />
+    <ClCompile Include="main_2.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
