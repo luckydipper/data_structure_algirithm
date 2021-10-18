@@ -15,15 +15,21 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Exercise1_main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="StackDr.cpp">
+    <ClCompile Include="exercise3_main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="SortedType.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="UnsortedType.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="StackType.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="QueType.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

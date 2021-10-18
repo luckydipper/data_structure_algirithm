@@ -19,11 +19,13 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Exercise1_main.cpp" />
-    <ClCompile Include="StackDr.cpp" />
+    <ClCompile Include="exercise3_main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="QueType.h" />
+    <ClInclude Include="SortedType.h" />
     <ClInclude Include="StackType.h" />
+    <ClInclude Include="UnsortedType.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
