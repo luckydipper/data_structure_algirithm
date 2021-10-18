@@ -19,8 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="StackDr.cpp" />
     <ClCompile Include="Exercise1_main.cpp" />
+    <ClCompile Include="StackDr.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="StackType.h" />

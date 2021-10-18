@@ -1,90 +1,59 @@
-// Implementation file for StackType.h
+// Test driver
 
-#include <cstddef>
-#include <new>
 #include "StackType.h"
-void StackType::Push(ItemType newItem)
-// Adds newItem to the top of the stack.
-// Pre:  Stack has been initialized.
-// Post: If stack is full, FullStack exception is thrown;
-//       else newItem is at the top of the stack.
+#include <iostream>
+using namespace std;
 
+void ReplaceItem(StackType& stack, const ItemType& oldItem, const ItemType& newItem);
+
+int main()
 {
-  if (IsFull())
-    throw FullStack();
-  else
-  {
-    NodeType* location;
-    location = new NodeType;
-    location->info = newItem;
-    location->next = topPtr;
-    topPtr = location;
-  }
-}
-void StackType::Pop()
-// Removes top item from Stack and returns it in item.
-// Pre:  Stack has been initialized.
-// Post: If stack is empty, EmptyStack exception is thrown;
-//       else top element has been removed.
-{
-  if (IsEmpty())
-    throw EmptyStack();
-  else
-  {  
-    NodeType* tempPtr;
-    tempPtr = topPtr;
-    topPtr = topPtr->next;
-    delete tempPtr;
-  }
-}
-ItemType StackType::Top()
-// Returns a copy of the top item in the stack.
-// Pre:  Stack has been initialized.
-// Post: If stack is empty, EmptyStack exception is thrown;
-//       else a copy of the top element is returned.
-{
-  if (IsEmpty())
-    throw EmptyStack();
-  else
-    return topPtr->info;  
-}
-bool StackType::IsEmpty() const
-// Returns true if there are no elements on the stack; false otherwise.
-{
-    return (topPtr == NULL);
-}
-bool StackType::IsFull() const
-// Returns true if there is no room for another ItemType 
-//  on the free store; false otherwise.
-{
-  NodeType* location;
-  try
-  {
-    location = new NodeType;
-    delete location;
-    return false;
-  }
-  catch(std::bad_alloc)
-  {
-    return true;
-  }
+	StackType stack{};
+	stack.Push(1);
+	stack.Push(2);
+	stack.Push(3);
+	stack.Push(3);
+	stack.Push(3);
+	stack.Push(4);
+	stack.Push(2);
+	stack.Push(3);
+	stack.Push(2);
+	
+	StackType stack2{};
+	stack2.Push(4);
+	stack2.Push(3);
+	stack2.Push(2);
+	stack2.Push(1);
+
+	ReplaceItem(stack, 1, 20);
+	stack.ReplaceItem(3, 10);
+	while (!stack.IsEmpty())
+	{
+		cout << stack.Top() << endl;
+		stack.Pop();
+	}
 }
 
-StackType::~StackType()
-// Post: stack is empty; all items have been deallocated.
+void ReplaceItem(StackType& stack, const ItemType& oldItem, const ItemType& newItem)
 {
-    NodeType* tempPtr;
+	// 
+	StackType inversed_stack{};
+	while (!stack.IsEmpty())
+	{
+		inversed_stack.Push(stack.Top());
+		stack.Pop();
+	}
 
-    while (topPtr != NULL)
-    {
-        tempPtr = topPtr;
-        topPtr = topPtr->next;
-        delete tempPtr;
-    }
+	// Replace old item
+	while (!inversed_stack.IsEmpty())
+	{
+		if (inversed_stack.Top() == oldItem)
+		{
+			stack.Push(newItem);
+			inversed_stack.Pop();
+			continue;
+		}
+		stack.Push(inversed_stack.Top());
+		inversed_stack.Pop();
+	}
 }
-
-StackType::StackType()	// Class constructor.
-{
-    topPtr = NULL;
-}
-

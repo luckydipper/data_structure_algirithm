@@ -44,6 +44,7 @@ public:
   // Post: If (stack is empty), EmptyStack exception is thrown;
   //     otherwise, top element has been removed from stack.
 
+  void ReplaceItem(const ItemType& oldItem, const ItemType& newItem);
 
 private:
   NodeType* topPtr;
@@ -52,6 +53,6 @@ private:
 struct NodeType
 {
   ItemType info;
-  NodeType* next;
+  NodeType* next = nullptr;
 };
 
