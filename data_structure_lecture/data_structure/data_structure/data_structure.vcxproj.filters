@@ -15,16 +15,16 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="QueType.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="counted_queue.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="main_2.cpp">
+    <ClCompile Include="StackDr.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Exercise1_main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="StackType.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
