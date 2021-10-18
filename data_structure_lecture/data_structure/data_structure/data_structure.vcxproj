@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="exercise3_main.cpp" />
+    <ClCompile Include="exercise4_5_main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="QueType.h" />

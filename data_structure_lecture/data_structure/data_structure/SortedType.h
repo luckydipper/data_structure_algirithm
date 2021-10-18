@@ -197,26 +197,30 @@ void SortedType<ItemType>::DeleteItem(ItemType item)
 //       An element in the list has a key that matches item's.
 // Post: No element in the list has a key that matches item's.
 {
-    NodeType<ItemType>* location = listData;
-    NodeType<ItemType>* tempLocation;
+    NodeType<ItemType>* iterator = listData->next;
+    NodeType<ItemType>* back_iterator = listData;
 
-    // Locate node to be deleted.
-    if (item == listData->info)
+    while (iterator != NULL)
     {
-        tempLocation = location;
-        listData = listData->next;		// Delete first node.
+        if (item == iterator->info)
+        {
+            back_iterator->next = iterator->next;
+            length--;
+            delete iterator;
+            iterator = back_iterator->next;
+            continue;
+        }
+        back_iterator = iterator;
+        iterator = iterator->next;
     }
-    else
+    if (listData->info == item)
     {
-        while (!(item==(location->next)->info))
-          location = location->next;
-
-        // Delete node at location->next
-        tempLocation = location->next;
-        location->next = (location->next)->next;
+        NodeType<ItemType>* temp_first_node = listData;
+        listData = listData->next;
+        length--;
+        delete temp_first_node;
     }
-    delete tempLocation;
-    length--;
+    //check first item
 }
 template <class ItemType>
 

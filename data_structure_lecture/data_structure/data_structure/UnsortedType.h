@@ -2,6 +2,8 @@
 // Header file for Unsorted List ADT.  
 template <class ItemType>
 struct NodeType;
+#include <iostream>
+using namespace std;
 
 // Assumption:  ItemType is a type for which the operators "<" 
 // and "==" are defined?ither an appropriate built-in type or
@@ -169,30 +171,31 @@ void UnsortedType<ItemType>::InsertItem(ItemType item)
 }
 template <class ItemType>
 void UnsortedType<ItemType>::DeleteItem(ItemType item)
-// Pre:  item's key has been initialized.
-//       An element in the list has a key that matches item's.
-// Post: No element in the list has a key that matches item's.
 {
-    NodeType<ItemType>* location = listData;
-    NodeType<ItemType>* tempLocation;
-
-    // Locate node to be deleted.
-    if (item == listData->info)
+    NodeType<ItemType>* iterator = listData->next;
+    NodeType<ItemType>* back_iterator = listData;
+    
+    while (iterator != NULL)
     {
-        tempLocation = location;
-        listData = listData->next;		// Delete first node.
+        if (item == iterator->info)
+        {
+            back_iterator->next = iterator->next;
+            length--;
+            delete iterator;
+            iterator = back_iterator->next;
+            continue;
+        }
+        back_iterator = iterator;
+        iterator = iterator->next;
     }
-    else
+    //check first item
+    if (listData->info == item)
     {
-        while (!(item==(location->next)->info))
-            location = location->next;
-
-        // Delete node at location->next
-        tempLocation = location->next;
-        location->next = (location->next)->next;
+        NodeType<ItemType>* temp_first_node = listData;
+        listData = listData->next;
+        length--;
+        delete temp_first_node;
     }
-    delete tempLocation;
-    length--;
 }
 
 template <class ItemType>
