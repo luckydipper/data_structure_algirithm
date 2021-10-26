@@ -165,8 +165,14 @@ void UnsortedType<ItemType>::InsertItem(ItemType item)
 
     location = new NodeType<ItemType>;
     location->info = item;
-    location->next = listData;
-    listData = location;
+    //location->next = listData;
+    //listData = location;
+    NodeType<ItemType>* iterator = listData;
+    for (int i = 0; i < length; i++)
+    {
+        iterator->next = iterator;
+    }
+    iterator->next = location;
     length++;
 }
 template <class ItemType>
