@@ -19,13 +19,13 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="exercise4_5_main.cpp" />
+    <ClInclude Include="line.hpp" />
+    <ClInclude Include="text_editor.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="QueType.h" />
-    <ClInclude Include="SortedType.h" />
-    <ClInclude Include="StackType.h" />
-    <ClInclude Include="UnsortedType.h" />
+    <ClCompile Include="exercise_3_main.cpp" />
+    <ClCompile Include="line.cpp" />
+    <ClCompile Include="text_editor.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
