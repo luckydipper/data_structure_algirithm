@@ -22,7 +22,7 @@
     <ClInclude Include="UnsortedType.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="exercise_4_main.cpp" />
+    <ClCompile Include="exercise_5_main.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

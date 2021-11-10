@@ -1,6 +1,7 @@
 // Header file for Unsorted List ADT.  
 template <class ItemType>
 struct NodeType;
+#include <iostream>
 using namespace std;
 // Assumption:  ItemType is a type for which the operators "<" 
 // and "==" are defined?ither an appropriate built-in type or
@@ -61,10 +62,18 @@ public:
   //       item is a copy of element at current position.
 
   void PrintSumSquares() const;
-private:
+  void Sort(NodeType<ItemType>* location);
+
   NodeType<ItemType>* listData;
+
+protected:
+    NodeType<ItemType>* MinLoc(NodeType<ItemType>* location, NodeType<ItemType>* minPtr);
+    NodeType<ItemType>* MinLoc(NodeType<ItemType>* location);
+
+private:
   int length;
   NodeType<ItemType>* currentPos;
+
 };
 
 template<class ItemType>
@@ -286,4 +295,63 @@ void UnsortedType<ItemType>::PrintSumSquares() const
     cout << SumSquares_c(listData) << endl;
     cout << SumSquares_d(listData) << endl;
     cout << SumSquares_e(listData) << endl;
+}
+
+
+//함수 호출 시 파라미터로 클래스 내부 변수인 listData가 넘겨져야 한다.
+template <class ItemType>
+NodeType<ItemType>* UnsortedType<ItemType>::MinLoc(NodeType<ItemType>* location,
+    NodeType<ItemType>* minPtr)
+{
+    if (location != NULL) //general case
+    {
+        if (location->info < minPtr->info)
+        {
+            minPtr = location;
+            return MinLoc(location->next, minPtr); // 다음 노드로 함수 재귀 호출
+        }
+    }
+    else // base case
+        return minPtr;
+}
+
+
+template <class ItemType>
+NodeType<ItemType>* UnsortedType<ItemType>::MinLoc(NodeType<ItemType>* location) {
+    if (location == NULL) // base case: 원래 리스트가 empty (listData가 NULL) 일 때
+        return NULL;
+    else if (location->next == NULL) // another base case : 리스트의 마지막 노드
+        return location;
+    else { // general case: location != NULL
+        NodeType<ItemType>* minPtr = MinLoc(location->next);
+        if (location->info < minPtr->info) // minPtr은 절대 NULL이 아님. Why?
+        {
+            minPtr = location;
+        }
+        return minPtr;
+    }
+}
+
+
+
+
+template <class ItemType>
+void UnsortedType<ItemType>::Sort(NodeType<ItemType>* location)
+{
+    NodeType<ItemType>* minPtr; //최소값을 가리키는 포인터
+    ItemType temp;
+    if (location != NULL) // empty 리스트가 아니면
+    {
+        minPtr = MinLoc(location); // ***
+        int temp = minPtr->info;
+        minPtr->info = location->info;
+        location->info = temp;
+        Sort(location->next);
+        // location에 저장된 값과 minPtr에 저장된 값을 exchange
+        // temp에 minPtr->info의 내용을 저장
+        //minPtr->info에 location->info를 저장
+        //location->info에 temp의 내용 저장
+        //다음 노드로(location->next) 재귀함수 호출
+    }
+    // base case는 do nothing
 }
