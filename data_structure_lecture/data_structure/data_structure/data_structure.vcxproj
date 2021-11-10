@@ -19,11 +19,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="exercise_1_main.cpp" />
-    <ClCompile Include="exercise_2_main.cpp" />
+    <ClInclude Include="UnsortedType.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="UnsortedType.h" />
+    <ClCompile Include="exercise_4_main.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
