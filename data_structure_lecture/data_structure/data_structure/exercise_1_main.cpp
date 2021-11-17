@@ -1,13 +1,21 @@
-#include <iostream>
-#include "UnsortedType.h"
+#include "QueType.h"
+#include "TreeType.h"
 
 
 int main()
 {
-    UnsortedType<int> students_score;
-    students_score.InsertItem(5);
-    students_score.InsertItem(2);
-    students_score.InsertItem(3);
-    students_score.InsertItem(1);
-    students_score.PrintSumSquares();
+	TreeType BinaraySearchTree{};
+	BinaraySearchTree.InsertItem('H');
+	BinaraySearchTree.InsertItem('Q');
+	BinaraySearchTree.InsertItem('D');
+	BinaraySearchTree.InsertItem('A');
+	BinaraySearchTree.InsertItem('E');
+	BinaraySearchTree.InsertItem('P');
+	BinaraySearchTree.InsertItem('S');
+	BinaraySearchTree.InsertItem('F');
+
+
+	TreeNode* small_node = BinaraySearchTree.PtrToSuccessor();
+	delete small_node;
+	return 0;
 }
