@@ -26,10 +26,10 @@
     <ClCompile Include="TreeType.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="QueType.cpp">
+    <ClCompile Include="exercise_3_main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="exercise4_main.cpp">
+    <ClCompile Include="QueType.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

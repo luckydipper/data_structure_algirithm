@@ -14,7 +14,7 @@ int main()
 	BinaraySearchTree.InsertItem('F');
 	BinaraySearchTree.InsertItem('T');
 	BinaraySearchTree.InsertItem('S');
-	
+	bool a = BinaraySearchTree.IsBST();
 
 	return 0;
 }

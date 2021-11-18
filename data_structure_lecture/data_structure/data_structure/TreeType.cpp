@@ -396,34 +396,47 @@ TreeNode* TreeType::PtrToSuccessor()
     return PtrToSuccessor(root);
 }
 
-//bool Imp_IsBST(TreeNode* tree);
-//
-//bool TreeType::IsBST() // 클래스에 IsBST 함수를 선언하세요.
-//{
-//    return Imp_IsBST(root);
-//}
+TreeNode* GetMin(TreeNode* &node)
+{
+    TreeNode* small_node =node;
+    while (small_node->left != NULL)
+        small_node = small_node->left;
+    return small_node;
+}
 
-// in order traversal 하면서 왼쪽 노드가 오른쪽 노드보다 큰경우 return false
-//bool Imp_IsBST(TreeNode* tree, ItemType& min, ItemType& max)
-//{
-//    bool is_BST; // 기본값(마지막 NULL일 경우)
-//    if (tree == NULL)
-//        return true;
-//     
-//    //왼쪽 노드가 NULL이 아니면, 왼쪽 서브트리가 BST인지 체크하고 tree->info와 비교
-//    if (tree->left != NULL) 
-//    {
-//        is_BST = Imp_IsBST(tree->left, left_min, left_max);
-//        // 왼쪽 서브트리가 BST가 아니거나 tree->info가 왼쪽 서브트리 값보다 작은 경우
-//        if (!is_BST || tree->info <= tree->left->info) return false;
-//    }
-//    //오른쪽 노드가 NULL이 아니면, 오른쪽 서브트리가 BST인지 체크하고 tree->info와 비교
-//    if (…) {
-//        // 왼쪽 서브트리 코드 참조하여 작성
-//    }
-//    min = (tree->left == NULL) ? __ : __; max = …; // min, max의 값을 설정
-//    return true;
-//}
+TreeNode* GetMax(TreeNode*& node)
+{
+    TreeNode* max_node =node;
+    while (max_node->right != NULL)
+        max_node = max_node->right;
+    return max_node;
+}
+
+TreeNode* GetMax(TreeNode*& node);
+TreeNode* GetMin(TreeNode*& node);
+bool Imp_IsBST(TreeNode* tree);
+
+bool TreeType::IsBST() // 클래스에 IsBST 함수를 선언하세요.
+{
+    return Imp_IsBST(root);
+}
+
+bool Imp_IsBST(TreeNode* root)
+{
+    if (root == NULL)
+        return true;
+
+    if (root->left != NULL && GetMax(root->left)->info > root->info)
+        return false;
+
+    if (root->right != NULL && GetMin(root->right)->info < root->info)
+        return false;
+
+    if (!Imp_IsBST(root->left) || !Imp_IsBST(root->right))
+        return false;
+
+    return true;
+}
 
 
 int Imp_LeafCount(TreeNode* tree);
