@@ -20,10 +20,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="QueType.h" />
+    <ClInclude Include="SortedType.h" />
     <ClInclude Include="TreeType.h" />
+    <ClInclude Include="UnsortedType.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="exercise_3_main.cpp" />
+    <ClCompile Include="exercise_6_main.cpp" />
     <ClCompile Include="QueType.cpp" />
     <ClCompile Include="TreeType.cpp" />
   </ItemGroup>

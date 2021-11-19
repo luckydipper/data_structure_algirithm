@@ -14,7 +14,6 @@ int main()
 	BinaraySearchTree.InsertItem('S');
 	BinaraySearchTree.InsertItem('F');
 
-
 	TreeNode* small_node = BinaraySearchTree.PtrToSuccessor();
 	delete small_node;
 	return 0;
