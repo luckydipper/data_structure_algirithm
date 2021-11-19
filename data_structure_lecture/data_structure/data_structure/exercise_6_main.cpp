@@ -25,7 +25,18 @@ bool MatchingItem_Unsorted(TreeType& tree, UnsortedType<ItemType>& list)
 	}
 }
 
+//아래 구현과 비교해 볼 때 수행시간 면에서 무슨 차이가 있을까?
+//
+//tree.ResetTree(IN_ORDER); // tree에 iterator를 사용할 준비를 한다
+//for (int i = 0; i < list_length; i++) {
+//	tree.GetNextItem(item, IN_ORDER, found); // tree에서 하나의 아이템을 가져온다
+//	list.RetrieveItem(item, found); // list에 해당 아이템이 있는 검색. O(N)이 걸림.
+//	if (!found))
+//		return false;
+// 답 : tree부터 reset해서 구현하는 코드는 시간복잡도가 O(logN) + O(N)이다. queue에 저장해서 사용하기 때문이다.
+//		하지만 list부터 reset해서 1개씩 찾는 코드는 O(N * logN)의 시간이 걸린다.
 
+}
 int main()
 {
 	UnsortedType<char> abc_list{};
