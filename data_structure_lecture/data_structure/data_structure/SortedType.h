@@ -1,4 +1,8 @@
-// Header file for Unsorted List ADT.  
+// Header file for Unsorted List ADT.
+#pragma once
+#include <cstdlib>
+#include <iostream>
+
 template <class ItemType>
 struct NodeType;
 
@@ -89,7 +93,7 @@ bool SortedType<ItemType>::IsFull() const
     delete location;
     return false;
   }
-  catch(bad_alloc exception)
+  catch(std::bad_alloc exception)
   {
     return true;
   }
@@ -157,7 +161,7 @@ void SortedType<ItemType>::InsertItem(ItemType item)
   // Find insertion point.
   while (moreToSearch)
   {
-    if (location->info < item)
+    if (location->info > item)
     {
       predLoc = location;
       location = location->next;

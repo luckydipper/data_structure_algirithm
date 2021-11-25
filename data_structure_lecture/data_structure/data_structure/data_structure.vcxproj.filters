@@ -27,12 +27,15 @@
     <ClInclude Include="StackType.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="PQType_list.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="StackType.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="exercise_2_main.cpp">
+    <ClCompile Include="exercise_3_main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
