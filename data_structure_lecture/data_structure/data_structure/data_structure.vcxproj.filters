@@ -15,29 +15,11 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="SortedType.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="PQType.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Heap.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="StackType.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="PQType_list.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="PQType_stack.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="StackType.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="exercise_4_main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

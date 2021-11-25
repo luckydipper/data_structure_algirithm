@@ -19,16 +19,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Heap.h" />
-    <ClInclude Include="PQType.h" />
-    <ClInclude Include="PQType_list.h" />
-    <ClInclude Include="PQType_stack.h" />
-    <ClInclude Include="SortedType.h" />
-    <ClInclude Include="StackType.h" />
+    <ClCompile Include="exercise_4_main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="exercise_4_main.cpp" />
-    <ClCompile Include="StackType.cpp" />
+    <ClInclude Include="PQType_stack.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
