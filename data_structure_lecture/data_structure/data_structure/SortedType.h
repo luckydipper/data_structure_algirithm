@@ -1,23 +1,12 @@
-#pragma once
-#ifndef Sorted_type_10_18
-#define Sorted_type_10_18
-
 // Header file for Unsorted List ADT.  
-//template <class ItemType_sorted>
-//struct NodeType_s;
+template <class ItemType>
+struct NodeType;
 
-template<class ItemType_sorted>
-struct NodeType_s
-{
-    ItemType_sorted info;
-    NodeType_s* next;
-};
-
-// Assumption:  ItemType_sorted is a type for which the operators "<" 
+// Assumption:  ItemType is a type for which the operators "<" 
 // and "==" are defined-either an appropriate built-in type or
 // a class that overloads these operators.
 
-template <class ItemType_sorted>
+template <class ItemType>
 class SortedType
 {
 public:
@@ -36,7 +25,7 @@ public:
   // Initializes list to empty state.
   // Post:  List is empty.
 
-  void RetrieveItem(ItemType_sorted& item, bool& found);
+  void RetrieveItem(ItemType& item, bool& found);
   // Retrieves list element whose key matches item's key 
   // (if present).
   // Pre:  Key member of item is initialized.
@@ -46,13 +35,13 @@ public:
   //       unchanged. 
   //       List is unchanged.
   
-  void InsertItem(ItemType_sorted item); 
+  void InsertItem(ItemType item); 
   // Adds item to list.
   // Pre:  List is not full.
   //       item is not in list. 
   // Post: item is in list.
 
-  void DeleteItem(ItemType_sorted item);
+  void DeleteItem(ItemType item);
   // Deletes the element whose key matches item's key.
   // Pre:  Key member of item is initialized.
   //       One and only one element in list has a key matching
@@ -64,54 +53,58 @@ public:
   // list.
   // Post: Current position is prior to list.
 
-  void GetNextItem(ItemType_sorted&);
+  void GetNextItem(ItemType&);
   // Gets the next element in list.
   // Pre:  Current position is defined.
   //       Element at current position is not last in list.
   // Post: Current position is updated to next position.
   //       item is a copy of element at current position.
 
-  void MergeLists(SortedType<ItemType_sorted>& other, SortedType<ItemType_sorted>& result);
 private:
-  NodeType_s<ItemType_sorted>* listData;
+  NodeType<ItemType>* listData;
   int length;
-  NodeType_s<ItemType_sorted>* currentPos;
+  NodeType<ItemType>* currentPos;
 };
-
-template <class ItemType_sorted>
-SortedType<ItemType_sorted>::SortedType()  // Class constructor
+template<class ItemType>
+struct NodeType
+{
+    ItemType info;
+    NodeType* next;
+};
+template <class ItemType>
+SortedType<ItemType>::SortedType()  // Class constructor
 {
   length = 0;
   listData = NULL;
 }
-template<class ItemType_sorted>
-bool SortedType<ItemType_sorted>::IsFull() const
-// Returns true if there is no room for another ItemType_sorted 
+template<class ItemType>
+bool SortedType<ItemType>::IsFull() const
+// Returns true if there is no room for another ItemType 
 //  on the free store; false otherwise.
 {
-  NodeType_s<ItemType_sorted>* location;
+  NodeType<ItemType>* location;
   try
   {
-    location = new NodeType_s<ItemType_sorted>;
+    location = new NodeType<ItemType>;
     delete location;
     return false;
   }
-  catch(std::bad_alloc exception)
+  catch(bad_alloc exception)
   {
     return true;
   }
 }
-template <class ItemType_sorted>
-int SortedType<ItemType_sorted>::LengthIs() const
+template <class ItemType>
+int SortedType<ItemType>::LengthIs() const
 // Post: Number of items in the list is returned.
 {
   return length;
 }
-template <class ItemType_sorted>
-void SortedType<ItemType_sorted>::MakeEmpty()
+template <class ItemType>
+void SortedType<ItemType>::MakeEmpty()
 // Post: List is empty; all items have been deallocated.
 {
-    NodeType_s<ItemType_sorted>* tempPtr;
+    NodeType<ItemType>* tempPtr;
 
     while (listData != NULL)
     {
@@ -121,12 +114,12 @@ void SortedType<ItemType_sorted>::MakeEmpty()
     }
     length = 0;
 }
-template <class ItemType_sorted>
-void SortedType<ItemType_sorted>::RetrieveItem(ItemType_sorted& item, 
+template <class ItemType>
+void SortedType<ItemType>::RetrieveItem(ItemType& item, 
      bool& found)
 {
   bool moreToSearch;
-  NodeType_s<ItemType_sorted>* location;
+  NodeType<ItemType>* location;
 
   location = listData;
   found = false;
@@ -149,12 +142,12 @@ void SortedType<ItemType_sorted>::RetrieveItem(ItemType_sorted& item,
   }
 }
 
-template <class ItemType_sorted>
-void SortedType<ItemType_sorted>::InsertItem(ItemType_sorted item)
+template <class ItemType>
+void SortedType<ItemType>::InsertItem(ItemType item)
 {
-  NodeType_s<ItemType_sorted>* newNode;  // pointer to node being inserted
-  NodeType_s<ItemType_sorted>* predLoc;  // trailing pointer
-  NodeType_s<ItemType_sorted>* location; // traveling pointer
+  NodeType<ItemType>* newNode;  // pointer to node being inserted
+  NodeType<ItemType>* predLoc;  // trailing pointer
+  NodeType<ItemType>* location; // traveling pointer
   bool moreToSearch;
 
   location = listData;
@@ -175,7 +168,7 @@ void SortedType<ItemType_sorted>::InsertItem(ItemType_sorted item)
   }
 
   // Prepare node for insertion
-  newNode = new NodeType_s<ItemType_sorted>;
+  newNode = new NodeType<ItemType>;
   newNode->info = item;
   // Insert node into list.
   if (predLoc == NULL)         // Insert as first
@@ -191,47 +184,43 @@ void SortedType<ItemType_sorted>::InsertItem(ItemType_sorted item)
   length++;
 }
 
-template <class ItemType_sorted>
-void SortedType<ItemType_sorted>::DeleteItem(ItemType_sorted item)
+template <class ItemType>
+void SortedType<ItemType>::DeleteItem(ItemType item)
 // Pre:  item's key has been initialized.
 //       An element in the list has a key that matches item's.
 // Post: No element in the list has a key that matches item's.
 {
-    NodeType_s<ItemType_sorted>* iterator = listData->next;
-    NodeType_s<ItemType_sorted>* back_iterator = listData;
+    NodeType<ItemType>* location = listData;
+    NodeType<ItemType>* tempLocation;
 
-    while (iterator != NULL)
+    // Locate node to be deleted.
+    if (item == listData->info)
     {
-        if (item == iterator->info)
-        {
-            back_iterator->next = iterator->next;
-            length--;
-            delete iterator;
-            iterator = back_iterator->next;
-            continue;
-        }
-        back_iterator = iterator;
-        iterator = iterator->next;
+        tempLocation = location;
+        listData = listData->next;		// Delete first node.
     }
-    if (listData->info == item)
+    else
     {
-        NodeType_s<ItemType_sorted>* temp_first_node = listData;
-        listData = listData->next;
-        length--;
-        delete temp_first_node;
+        while (!(item==(location->next)->info))
+          location = location->next;
+
+        // Delete node at location->next
+        tempLocation = location->next;
+        location->next = (location->next)->next;
     }
-    //check first item
+    delete tempLocation;
+    length--;
 }
-template <class ItemType_sorted>
+template <class ItemType>
 
-void SortedType<ItemType_sorted>::ResetList()
+void SortedType<ItemType>::ResetList()
 // Post: Current position has been initialized.
 {
   currentPos = NULL;
 }
  
-template <class ItemType_sorted>
-void SortedType<ItemType_sorted>::GetNextItem(ItemType_sorted& item)
+template <class ItemType>
+void SortedType<ItemType>::GetNextItem(ItemType& item)
 // Post:  Current position has been updated; item is 
 //        current item.
 {
@@ -242,11 +231,11 @@ void SortedType<ItemType_sorted>::GetNextItem(ItemType_sorted& item)
 
 } 
 
-template <class ItemType_sorted>
-SortedType<ItemType_sorted>::~SortedType()
+template <class ItemType>
+SortedType<ItemType>::~SortedType()
 // Post: List is empty; all items have been deallocated.
 {
-    NodeType_s<ItemType_sorted>* tempPtr;
+    NodeType<ItemType>* tempPtr;
 
     while (listData != NULL)
     {
@@ -255,42 +244,3 @@ SortedType<ItemType_sorted>::~SortedType()
         delete tempPtr;
     }
   }
-
-template <class ItemType_sorted>
-void SortedType<ItemType_sorted>::MergeLists(SortedType<ItemType_sorted>& other, SortedType<ItemType_sorted>& result)
-{
-    result.MakeEmpty();
-    other.ResetList();
-    this -> ResetList();
-
-    for (int i = 0; i < other.LengthIs(); i++)
-    {
-        int temp;
-        other.GetNextItem(temp);
-        result.InsertItem(temp);
-    }
-    for (int i = 0; i < this->LengthIs(); i++)
-    {
-        int temp;
-        this->GetNextItem(temp);
-        result.InsertItem(temp);
-    }
-}
-
-
-//궂이 이렇게 구현할 필요가 없을 듯
-//NodeType_s<ItemType_sorted>* iterator1 = this->listData;
-//NodeType_s<ItemType_sorted>* iterator2 = other.listData;
-//
-//while (iterator1 != NULL && iterator2 != NULL)
-//{
-//    if (iterator1->info > iterator2->info)
-//    {
-//        result.InsertItem(*iterator2);
-//        result.InsertItem(*iterator1);
-//
-//    }
-//    iterator1 = iterator1->next;
-//    iterator2 = iterator2->next;
-//}
-#endif // !Sorted_type_10_18

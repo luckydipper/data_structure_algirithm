@@ -15,27 +15,24 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="TreeType.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="SortedType.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="QueType.h">
+    <ClInclude Include="PQType.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="UnsortedType.h">
+    <ClInclude Include="Heap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StackType.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="TreeType.cpp">
+    <ClCompile Include="StackType.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="QueType.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="exercise_6_main.cpp">
+    <ClCompile Include="exercise_1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

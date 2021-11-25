@@ -19,15 +19,14 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="QueType.h" />
+    <ClInclude Include="Heap.h" />
+    <ClInclude Include="PQType.h" />
     <ClInclude Include="SortedType.h" />
-    <ClInclude Include="TreeType.h" />
-    <ClInclude Include="UnsortedType.h" />
+    <ClInclude Include="StackType.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="exercise_6_main.cpp" />
-    <ClCompile Include="QueType.cpp" />
-    <ClCompile Include="TreeType.cpp" />
+    <ClCompile Include="exercise_1.cpp" />
+    <ClCompile Include="StackType.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
