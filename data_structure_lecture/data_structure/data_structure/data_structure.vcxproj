@@ -25,7 +25,7 @@
     <ClInclude Include="StackType.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="exercise_1.cpp" />
+    <ClCompile Include="exercise_2_main.cpp" />
     <ClCompile Include="StackType.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
