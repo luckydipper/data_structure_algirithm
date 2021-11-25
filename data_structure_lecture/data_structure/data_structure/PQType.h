@@ -7,6 +7,7 @@ template<class ItemType>
 class PQType
 {
 public:
+  PQType();          // parameterized class constructor
   PQType(int);          // parameterized class constructor
   ~PQType();            // class destructor
   
@@ -39,6 +40,12 @@ private:
   int maxItems;
 };
 
+template<class ItemType>
+PQType<ItemType>::PQType()
+{
+    items.elements = new ItemType[1000];
+    length = 0;
+}
 template<class ItemType>
 PQType<ItemType>::PQType(int max)
 {

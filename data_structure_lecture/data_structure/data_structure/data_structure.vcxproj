@@ -22,11 +22,12 @@
     <ClInclude Include="Heap.h" />
     <ClInclude Include="PQType.h" />
     <ClInclude Include="PQType_list.h" />
+    <ClInclude Include="PQType_stack.h" />
     <ClInclude Include="SortedType.h" />
     <ClInclude Include="StackType.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="exercise_3_main.cpp" />
+    <ClCompile Include="exercise_4_main.cpp" />
     <ClCompile Include="StackType.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

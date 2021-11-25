@@ -1,5 +1,5 @@
 // Linked Stack ADT
-
+#pragma once
 typedef int ItemType;
 struct NodeType;
 
