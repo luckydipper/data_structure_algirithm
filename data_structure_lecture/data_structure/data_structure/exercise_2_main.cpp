@@ -1,33 +1,53 @@
-#include "PQType.h"
-#include "Heap.h"
+#include "GraphType.h"
+#include "QueType.h"
 #include <iostream>
 using namespace std;
 
 int main()
 {
-	PQType<int> priority_queue(100);
-	priority_queue.Enqueue(56);
-	priority_queue.Enqueue(27);
-	priority_queue.Enqueue(42);
-	priority_queue.Enqueue(26);
-	priority_queue.Enqueue(15);
-	priority_queue.Enqueue(3);
-	priority_queue.Enqueue(19);
-	priority_queue.Enqueue(25);
-	priority_queue.Enqueue(24);
-	priority_queue.Enqueue(5);
+    GraphType<const char*> ZooGraph(20);
+    ZooGraph.AddVertex("dog");
+    ZooGraph.AddVertex("cat");
+    ZooGraph.AddVertex("animal");
+    ZooGraph.AddVertex("vertebrate");
+    ZooGraph.AddVertex("oyster");
+    ZooGraph.AddVertex("shellfish");
+    ZooGraph.AddVertex("invertebrate");
+    ZooGraph.AddVertex("crab");
+    ZooGraph.AddVertex("poodle");
+    ZooGraph.AddVertex("monkey");
+    ZooGraph.AddVertex("banana");
+    ZooGraph.AddVertex("dalmatian");
+    ZooGraph.AddVertex("dachshund");
 
-	//exercise_2 
-	priority_queue.Enqueue(28);
-	priority_queue.Enqueue(2);
-	priority_queue.Enqueue(40);
-	
-	//a. 28,27,19,26,15,3,2,25,24,5
-	int x, y, z;			   //b.
-	priority_queue.Dequeue(x); //x = 56
-	priority_queue.Dequeue(y); //y = 42
-	priority_queue.Dequeue(z); //z = 40
+    ZooGraph.AddEdge("vertebrate","animal",10);
+    ZooGraph.AddEdge("invertebrate", "animal", 20);
+    ZooGraph.AddEdge("dog", "vertebrate", 30);
+    ZooGraph.AddEdge("cat", "vertebrate", 40);
+    ZooGraph.AddEdge("monkey", "vertebrate", 50);
+    ZooGraph.AddEdge("shellfish", "invertebrate", 60);
+    ZooGraph.AddEdge("crab", "shellfish", 70);
+    ZooGraph.AddEdge("oyster", "invertebrate", 80);
+    ZooGraph.AddEdge("poodle", "dog", 90);
+    ZooGraph.AddEdge("dalmatian", "dog", 100);
+    ZooGraph.AddEdge("dachshund", "dog", 110);
 
-	cout << x << " " << y << " " << z << endl;
-	return 0;
+    cout << "Weight of vertebrate to animl is " << ZooGraph.WeightIs("vertebrate", "animal") << endl;
+    cout << "Weight of poodle to dog is  " << ZooGraph.WeightIs("poodle", "dog") << endl;
+    ZooGraph.DeleteEdge("poodle", "dog");
+    cout << "Weight of poodle to dog is  " << ZooGraph.WeightIs("poodle", "dog") << endl;
+
+    cout << endl << "GetToVertices(dog,queue)" << endl;
+
+
+    QueType<const char*> queue;
+    ZooGraph.GetToVertices("poodle", queue);
+    //BFS
+    while (!queue.IsEmpty())
+    {
+        const char* item;
+        queue.Dequeue(item);
+        cout << item << endl;
+    }
+    return 0;
 }
