@@ -23,33 +23,49 @@ class GraphType:
         self.marks = [None] * maxV
 
     def add_vertex(self, vertex):
-        '''[1]'''
+        self.vertices[self.numVertices] = vertex
+        self.numVertices+=1
 
     def add_edge(self, fromVertex, toVertex, weight):
-        '''[2]'''
-
+        from_index = index_is(self.vertices, fromVertex)
+        to_index = index_is(self.vertices, toVertex)
+        self.edges[from_index][to_index] = weight
 
     def weight_is(self, fromVertex, toVertex):
-        '''[3]'''
+        from_index = index_is(self.vertices, fromVertex)
+        to_index = index_is(self.vertices, toVertex)
+        return self.edges[from_index][to_index]
 
 
     def get_to_vertices(self, vertex, adjVertices):
-        '''[4]'''
+        finder_index = index_is(self.vertices,vertex)
+        finding_list = self.edges[finder_index]
+        
+        for ind, weight in enumerate(finding_list):
+            if weight is not NULL_EDGE:
+                adjVertices.enqueue(self.vertices[ind])
 
 
 
     def clear_marks(self):
-        '''[5]'''
+        self.marks = [None] * self.maxVertices
 
 
     def is_marked(self, vertex):
-        '''[6]'''
+        index = index_is(self.vertices, vertex)
+        if self.marks[index] is None:
+            return False
+        else:
+            return True
 
 
     def mark_vertex(self, vertex):
-        '''[7]'''
+        index = index_is(self.vertices, vertex)
+        self.marks[index] = 1
 
 
     def delete_edge(self, fromVertex, toVertex):
-        '''[8]'''
+        from_index = index_is(self.vertices, fromVertex)
+        to_index = index_is(self.vertices, toVertex)
+        self.edges[from_index][to_index] = NULL_EDGE
 

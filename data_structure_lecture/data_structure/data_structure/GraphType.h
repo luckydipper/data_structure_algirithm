@@ -148,10 +148,9 @@ template <class VertexType>
 bool GraphType<VertexType>::DepthFirstSearch(VertexType startVertex, VertexType endVertex)
 {
 	if (startVertex == endVertex)
-	{
-		cout << startVertex;
 		return true;
-	}
+	
+
 	QueType<VertexType> vertexQ;
 	GetToVertices(startVertex, vertexQ);
 	while (!vertexQ.IsEmpty())
@@ -160,9 +159,9 @@ bool GraphType<VertexType>::DepthFirstSearch(VertexType startVertex, VertexType 
 		vertexQ.Dequeue(vertex);
 		if (vertex != startVertex)
 		{
+
 			if (DepthFirstSearch(vertex, endVertex))
 			{
-				cout << "<-" << vertex;
 				return true;
 			}
 		}

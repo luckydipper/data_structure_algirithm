@@ -34,7 +34,7 @@ if __name__ == '__main__':
     print()
     print("DepthFirstSearch(graph, \"dalmatian\", \"animal\")")
     depth_first_search(graph, "dalmatian", "animal")
-
+    
     print()
     print("BreadthFirstSearch(graph, \"dalmatian\", \"animal\")")
     breadth_first_search(graph, "dalmatian", "animal")
