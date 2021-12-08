@@ -1,14 +1,5 @@
 #include "Student.h"
 #include <string>
-bool operator> (Student l, Student r)
-{
-	std::string l_string = l.getName();
-	std::string r_string = r.getName();
-	if (l_string > r_string)
-		return true;
-	else
-		return false;
-}
 
 int MinIndex(Student values[], int startIndex, int endIndex)
 {

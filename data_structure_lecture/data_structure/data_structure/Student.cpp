@@ -41,3 +41,34 @@ void PrintByPointer(ostream& out, Student* values[], int numValues)
 		(*values[i]).Print(out);
 	}
 }
+
+bool operator> (Student l, Student r)
+{
+	std::string l_string = l.getName();
+	std::string r_string = r.getName();
+	if (l_string > r_string)
+		return true;
+	else
+		return false;
+}
+
+
+bool operator<= (Student l, Student r)
+{
+	std::string l_string = l.getName();
+	std::string r_string = r.getName();
+	if (l_string <= r_string)
+		return true;
+	else
+		return false;
+}
+
+bool operator< (Student l, Student r)
+{
+	std::string l_string = l.getName();
+	std::string r_string = r.getName();
+	if (l_string < r_string)
+		return true;
+	else
+		return false;
+}
