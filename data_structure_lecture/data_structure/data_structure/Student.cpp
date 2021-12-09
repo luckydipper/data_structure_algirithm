@@ -1,4 +1,5 @@
 #include "Student.h"
+#include <cstring>
 
 void Print(ostream& out, Student stu[], int numelement)
 {
@@ -71,4 +72,48 @@ bool operator< (Student l, Student r)
 		return true;
 	else
 		return false;
+}
+
+//hash에서 인식을 못하네.
+bool operator== (Student l, Student r)
+{
+	std::string l_string = l.getName();
+	std::string r_string = r.getName();
+	if (l_string == r_string)
+		return true;
+	else
+		return false;
+}
+
+bool Student::operator==(Student& r)
+{
+	std::string l_string = this->getName();
+	std::string r_string = r.getName();
+	if (l_string == r_string)
+		return true;
+	else
+		return false;
+}
+
+
+
+void Swap(Student*& item1, Student*& item2)
+{
+	Student* tempItem;
+	tempItem = item1;
+	item1 = item2;
+	item2 = tempItem;
+}
+
+
+char* Student::getKey()
+{
+	return name;
+}
+
+void Student::EmptyKey()
+{
+	id = -1;
+	*name = '\0';
+	gpa = -1;
 }

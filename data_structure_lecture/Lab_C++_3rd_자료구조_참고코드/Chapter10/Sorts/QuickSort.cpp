@@ -10,7 +10,7 @@ void Split(ItemType values[], int first, int last, int& splitPoint)
   {
     onCorrectSide = true;
     while (onCorrectSide)         // Move first toward last.
-      if (values[first] > splitVal)
+      if (values[first] > splitVal) //이름으로 연산자 오버로딩 함.
         onCorrectSide = false;
       else
       {  

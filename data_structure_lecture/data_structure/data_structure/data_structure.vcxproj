@@ -19,11 +19,13 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Heap.h" />
-    <ClInclude Include="HeapSort.h" />
+    <ClCompile Include="exercise_1_main.cpp" />
+    <ClCompile Include="Student.cpp" />
+    <ClCompile Include="Swap.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="exercise5.cpp" />
+    <ClInclude Include="QuickSort.h" />
+    <ClInclude Include="Student.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
