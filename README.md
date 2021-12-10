@@ -1,4 +1,4 @@
-# data_structure_algirithm
+# data_structure_algorithm
 Study data structure &amp; algorithm for coding test
 
 .vscode/
