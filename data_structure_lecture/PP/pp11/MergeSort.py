@@ -7,7 +7,7 @@ def merge_sort(values, first, last):
 
 
 def merge(values, leftFirst, leftLast, rightFirst, rightLast):
-    startIndex = leftFirst
+    starting_index = leftFirst
     temp = []
     
     while(leftFirst <= leftLast and rightFirst <= rightLast):
@@ -27,6 +27,6 @@ def merge(values, leftFirst, leftLast, rightFirst, rightLast):
         rightFirst += 1
         
     for i, elem in enumerate(temp):
-        savePoint = startIndex + i
-        values[savePoint] = elem
+        sort_boundery_index = starting_index + i
+        values[sort_boundery_index] = elem
     

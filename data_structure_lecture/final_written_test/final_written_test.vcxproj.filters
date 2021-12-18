@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="3_BST">
+      <UniqueIdentifier>{3812156a-007d-4333-a7fd-041cc47eab72}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="1_circuler_linked_list">
+      <UniqueIdentifier>{fa9720cb-9ec5-4b0d-bfde-50b70c12fea6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="2_recursive">
+      <UniqueIdentifier>{b69dcc81-82c1-4fff-b856-e71674606904}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="4_heap_prioirty_queue">
+      <UniqueIdentifier>{bf6ea6f8-8dce-46a3-8fac-d19fa87be71c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="5_graph">
+      <UniqueIdentifier>{f1856fea-40db-4019-905e-078988686f4e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="5_hash_table">
+      <UniqueIdentifier>{f3268b8e-0071-4c05-9fd3-06e3b30722c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="6_sorting">
+      <UniqueIdentifier>{c236604a-8ad1-4aa3-bb16-435ff14c2761}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\LAB\lab9\QueType.cpp">
+      <Filter>3_BST</Filter>
+    </ClCompile>
+    <ClCompile Include="..\LAB\lab9\TreeType.cpp">
+      <Filter>3_BST</Filter>
+    </ClCompile>
+    <ClCompile Include="..\LAB\LAB13\1번\SelectionSort.cpp">
+      <Filter>6_sorting</Filter>
+    </ClCompile>
+    <ClCompile Include="..\LAB\LAB13\2번\BubbleSort.cpp">
+      <Filter>6_sorting</Filter>
+    </ClCompile>
+    <ClCompile Include="..\LAB\LAB13\3번\InsertionSort.cpp">
+      <Filter>6_sorting</Filter>
+    </ClCompile>
+    <ClCompile Include="..\LAB\LAB13\4번\Student.cpp">
+      <Filter>6_sorting</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\LAB\lab9\QueType.h">
+      <Filter>3_BST</Filter>
+    </ClInclude>
+    <ClInclude Include="..\LAB\lab9\TreeType.h">
+      <Filter>3_BST</Filter>
+    </ClInclude>
+    <ClInclude Include="..\LAB\lab11\exercise_1\Heap.h">
+      <Filter>4_heap_prioirty_queue</Filter>
+    </ClInclude>
+    <ClInclude Include="..\LAB\lab11\exercise_1\PQType.h">
+      <Filter>4_heap_prioirty_queue</Filter>
+    </ClInclude>
+    <ClInclude Include="..\LAB\lab12\GraphType.h">
+      <Filter>5_graph</Filter>
+    </ClInclude>
+    <ClInclude Include="..\LAB\lab12\QueType.h">
+      <Filter>5_graph</Filter>
+    </ClInclude>
+    <ClInclude Include="..\LAB\LAB13\1번\SelectionSort.h">
+      <Filter>6_sorting</Filter>
+    </ClInclude>
+    <ClInclude Include="..\LAB\LAB13\2번\BubbleSort.h">
+      <Filter>6_sorting</Filter>
+    </ClInclude>
+    <ClInclude Include="..\LAB\LAB13\3번\InsertionSort.h">
+      <Filter>6_sorting</Filter>
+    </ClInclude>
+    <ClInclude Include="..\LAB\LAB13\4번\HeapSort.h">
+      <Filter>6_sorting</Filter>
+    </ClInclude>
+    <ClInclude Include="..\LAB\lab14\1번\QuickSort.h">
+      <Filter>6_sorting</Filter>
+    </ClInclude>
+    <ClInclude Include="..\LAB\lab14\2번\MergeSort.h">
+      <Filter>6_sorting</Filter>
+    </ClInclude>
+    <ClInclude Include="..\LAB\lab14\4번\HashTable.h">
+      <Filter>5_hash_table</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

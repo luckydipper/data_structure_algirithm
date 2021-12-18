@@ -2,8 +2,8 @@
 def reheap_down(elements, root, bottom):
     left = 2*root + 1
     right = 2*root + 2
+    
     if left <= bottom:
-
         if left == bottom:
             max_node = left
         else:
@@ -11,6 +11,7 @@ def reheap_down(elements, root, bottom):
                 max_node = right
             else:
                 max_node = left
+
         if elements[root] < elements[max_node]:
             elements[root], elements[max_node] = elements[max_node], elements[root]
             reheap_down(elements, max_node, bottom)
