@@ -110,6 +110,7 @@ ENV/
 env.bak/
 venv.bak/
 
+
 # Spyder project settings
 .spyderproject
 .spyproject
@@ -579,3 +580,7 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+
+
+# Custum!
+security.txt
