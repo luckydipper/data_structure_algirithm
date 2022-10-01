@@ -1,6 +1,10 @@
-// 대부분의 stack은 array에 int 1개면 구현이 가능. 굳이 stack stl을 사용하지 않아도 됨.
+// 2022/10/01
+// tip1 : 처음에 n번 반복한다고 하면, 그래로 반복한다. stack이 비워질 때 까지 반복한다고 하면 실수가 많음!
+// tip2 : print string에 \n 1개씩 넣지 말고, 문자열만 넣은 후, \n 첨가해서 출력!
+
 #include <iostream>
 #include <stack>
+#include <string>
 using namespace std;
 
 int main()
@@ -8,49 +12,40 @@ int main()
     ios_base::sync_with_stdio(false);
     cin.tie(nullptr);
 
-    int Max_num;
-    cin >> Max_num;
-
-    stack<int> origin;
-    for(int i = Max_num; i >= 1 ; i--)
-        origin.push(i);
+	int n;
+	cin >> n;
 	
-    stack<int> keep_order;
-    string print_result;
+	stack<int> stack_;
+	string print_data;
 	
-	cout << "start\n";
-	
-    while(!origin.empty() || !keep_order.empty())
-    {
-        int print_var;
-        cin >> print_var;
+	int start_to_push = 1;
+	while(n--)
+	{
+		int search_data;
+		cin >> search_data;
 		
-		cout << origin.top();
-        if (print_var >= origin.top())
-        {
-            while(origin.top() == print_var)
-            {
-                keep_order.push(origin.top());
-                origin.pop();
-                print_result += "+\n";
-                cout<<'+';
-            }
-            keep_order.pop();
-            cout<<'-';
-            print_result += "-/n";
-        }
-        else if (print_var == keep_order.top())
-        {
-
-            print_result += "-n";
-            cout<<'-';
-            keep_order.pop();
-        }
-        else
-        {
-            cout << "NO";
-            return 0;
-        }
-    }
-    cout << print_result;
+		if(stack_.empty() || stack_.top() < search_data)
+		{
+			for (int i = start_to_push; i <= search_data; i++)
+			{
+				stack_.push(i);
+				print_data += "+\n";
+			}
+			start_to_push = stack_.top() + 1;
+			stack_.pop();
+			print_data += "-\n";
+		}
+		else if(stack_.top() == search_data)
+		{
+			
+			stack_.pop();
+			print_data += "-\n";
+		}
+		else
+		{
+			print_data = "NO";
+			break;
+		}
+	}
+	cout << print_data;
 }
