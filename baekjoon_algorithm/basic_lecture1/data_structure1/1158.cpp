@@ -1,3 +1,7 @@
+// 22.10.09 last modified 
+// TODO : pass iterator as a function parameter
+// problem : free() error
+
 #include <iostream>
 #include <list>
 #include <vector>
