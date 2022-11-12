@@ -2,9 +2,11 @@
 #include <vector>
 using namespace std;
 
+int MAX_SIZE = 12;
+static vector<int> cache(MAX_SIZE, 0);
+
 int bottom_up_count(int n)
 {
-    static vector<int> cache(n+1, 0);
     cache[1] = 1;
     cache[2] = 2;
     cache[3] = 4;
