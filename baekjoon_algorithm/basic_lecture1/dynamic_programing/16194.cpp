@@ -10,7 +10,7 @@ int main()
     int N;
     cin >> N;
     
-    vector<int> prices(N);
+    vector<int> prices(N+1);
     for(int i = 1; i <= N; i++)
     {
         int x;
@@ -18,14 +18,15 @@ int main()
         prices[i] = x;
     }
 
-    vector<int> cache(N);
-    cache[1] = prices[1];
+    vector<int> cache(N+1);
+
     for(int i = 1; i <= N; i++)
     {
+        cache[i] = cache[i-1]+prices[1];
         for(int j = 1; j <= i; j++)
         {
-            cache[i] = min(cache[i], cache[i-j]+prices[i]);
+            cache[i] = min(cache[i], cache[i-j]+prices[j]);
         }
     }
     cout << cache[N];
-}
+} 
