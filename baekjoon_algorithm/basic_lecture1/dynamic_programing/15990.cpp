@@ -25,16 +25,17 @@ int main()
     start_with_3[2] = 0;
     start_with_3[3] = 1;
     
-    string result;
+    cache[1] = 1;
+    cache[2] = 1;
+    cache[3] = 3;
+
     while(T--)
     {
         int x;
         cin >> x;
   
         if(cache[x] != -1){
-            result += to_string(cache[x]);
-            result += '\n';
-            //cout << cache[x] << '\n';
+            cout << cache[x] << '\n';
             continue;
         }
         else{
@@ -42,12 +43,9 @@ int main()
             start_with_1[i] = (start_with_2[i-1] + start_with_3[i-1])%1000000009;
             start_with_2[i] = (start_with_1[i-2] + start_with_3[i-2])%1000000009;
             start_with_3[i] = (start_with_1[i-3] + start_with_2[i-3])%1000000009;
-            cache[i] = start_with_1[i] + start_with_2[i] +start_with_3[i];
+            cache[i] = ((start_with_1[i] + start_with_2[i])%1000000009 +start_with_3[i])%1000000009;
         }
-        //cout << cache[x] << '\n';
-        result += to_string(cache[x]);
-        result += '\n';
+        cout << cache[x] << '\n';
         }
     }
-    cout << result;
 }
