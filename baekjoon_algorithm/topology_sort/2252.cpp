@@ -4,22 +4,22 @@
 #include <algorithm>
 using namespace std;
 
-//adj list 쓰기로 결정 matrix는 크기가 너무 큰 듯?
-
-// 이건 declare만 한 것이라 전역변수 취급이 안되나?
+// declare만 했음. 해당 파일에서 전역변수로 쓸 수 있도록.
+// vector<vector<int>> adj;
+// vector<bool> visited;
+// vector<int> order;
 int N, M;
-vector<list<int>> adj;
-vector<bool> visited;
-vector<int> order;
-
+vector<vector<int>> adj{};
+vector<bool> visited{};
+vector<int> order{};
 // dfs' input nodes are not visited 
 void dfs(int here){
-    visited[here] = true; // 이 부분에서 에러가 발생 
-    for(list<int>::iterator i = adj[here].begin(); i != adj[here].end(); i++)
+    visited[here] = true; 
+    for(int i = 0; i < adj[here].size(); i++)
     {
-        cout <<"*i : " << *i<< "\n";
-        if(visited[*i] == false)
-            dfs(*i);
+        int there = adj[here][i];
+        if(!visited[there])
+            dfs(there);
     }
     order.push_back(here);
 }
@@ -36,15 +36,17 @@ void make_graph() // 이 함수를 main 안에 집어넣어서 동작시키면 �
 int main()
 {
     cin >> N >> M;
-    vector<list<int>> adj(N+1);
+
+    adj.resize(N+1);
+    visited.resize(N+1, false); // 커지는 경우에만 값이 들어가
 
     make_graph();
     
-    vector<bool> visited(N+1, false);
-    for(int i = 1; i < N+1; i++)
-        dfs(i);
+    for(int i = 1; i < N+1; i++){
+        if(!visited[i])
+            dfs(i);
+    }
 
- 
     reverse(order.begin(), order.end());
     
     for(int elem: order)
