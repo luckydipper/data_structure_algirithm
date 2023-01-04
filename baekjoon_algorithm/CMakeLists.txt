@@ -6,4 +6,4 @@ project(boj_algorithm
 set(CMAKE_BUILD_TYPE Debug)
 set(CMAKE_BUILD_TYPE RelWithDebInfo)
 
-add_executable(BOJ.out greedy/11047.cpp)
+add_executable(BOJ.out DP/12865.cpp)
