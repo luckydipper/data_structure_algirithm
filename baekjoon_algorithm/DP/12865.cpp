@@ -1,51 +1,37 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
-#include <map>
 using namespace std;
+int N, K;
+const int MAX_WEIGHT = 100000;
+const int MAX_COUNT = 100;
+vector<int> weight;
+vector<int> value;
 
-// 2차원 배열의 2열을 정렬하고 싶으면 cmp 함수를 만들어서 sort에 주면 됨.
+vector<vector<int>> cache(MAX_WEIGHT, vector<int> (MAX_COUNT, -1));
+
+// return optimal value, using product after the index.
+int pack(int index, int capacity){
+    if(index == N)
+        return 0;
+    else if(cache[index][capacity] != -1) 
+        return cache[index][capacity];
+    else if(capacity < weight[index])
+        return pack(index+1, capacity);
+    else
+        return max(pack(index+1, capacity), pack(index+1,capacity-weight[index])+value[index]);
+}
 
 int main(){
-    int N, K;
     cin >> N >> K;
-
-
-    multimap<int,int> weight_to_value;
-    
-    for(int i = 0; i < N; i++){
-        int temp1, temp2;
-        cin >> temp1 >> temp2;
-        pair<int,int> p_temp(temp1,temp2); //make pair가 더 좋을 듯
-        weight_to_value.insert(p_temp);
+    weight.resize(N);
+    value.resize(N);
+    for(int i=0; i<N; i++){
+        int tmp_weight, tmp_val;
+        cin >> tmp_weight >> tmp_val;
+        weight[i] = tmp_weight;
+        value[i] = tmp_val;
     }
-
-    // for(auto a: weight_to_value)
-    //     cout << a.first << " " << a.second << "\n";
-    
-    // k/2랑 j 가 같아서 min(val(2),val(2)) 되는 경우 막아야 함.
-
-    vector<int> maximum_values(K+1, 0);
-    for(int weight = 1; weight < maximum_values.size(); weight++){
-        max_value_of_weight = 0;
-        for(int devider = 0; devider < weight/2; devider++){
-            if(weight_to_value.upper_bound(devider) == weight_to_value.end())
-
-        }
-    }
-
-    for(int i = 1; i < maximum_values.size(); i++){
-        int largest_value_of_i = 0;
-        for(int j = 1; j <= i/2; j++){
-            int weight_candidate = weight_to_value[K/2 -j]+weight_to_value[j];
-            if( largest_value_of_i < weight_candidate)
-                largest_value_of_i = weight_candidate;
-        }
-        maximum_values[i] = largest_value_of_i;
-    }
-
-    for(auto a: maximum_values)
-        cout << a;
-    cout << weight_to_value[K];
+    cout << pack(0, K);
 }
 
