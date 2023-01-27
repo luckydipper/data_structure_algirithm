@@ -2,57 +2,41 @@
 #include <iostream>
 #include <algorithm>
 using namespace std;
-//begin end 보단 first last 표현이 더 직관적인 듯.
 
-void printVector(const vector<int>& vec )
-{
-    for(const int a: vec)
-        cout << a << " ";
-}
 int N, K;
 static int COUNT_NUM_CALL;
 vector<int> tmp;
 
+//!TODO 1! : 이렇게 써 놓으면 1st argument에 temporal r-value가 들어가면 오류
+// 나지 않나? -> const vector를 받아서 vector를 return 하도록 하는 것이 안전 할 것 같다.
+//!TODO 2! : begin end 보단 first last 표현이 더 직관적인 듯.
 
-//이렇게 써 놓으면 1st argument에 temporal r-value가 들어가면 오류
-// 나지 않나?
 void merge(vector<int>& unsorted, int begin, int mid, int end){
     int i = begin, j = mid+1, t = 0;
     while(i <= mid && j <= end){
-        COUNT_NUM_CALL++;
         if(unsorted[i] <= unsorted[j]){
-            if(COUNT_NUM_CALL == K){
-                cout << unsorted[i];
-            }
             tmp[t++] = unsorted[i++];
         }
         else{
-            if(COUNT_NUM_CALL == K){
-                cout << unsorted[j];
-            }
             tmp[t++] = unsorted[j++];
         }
     }
     while(i <= mid){
-        COUNT_NUM_CALL++;
-        if(COUNT_NUM_CALL == K){
-            cout << unsorted[i];
-        }
         tmp[t++] = unsorted[i++];
-        
     }
     while(j <= end){
-        COUNT_NUM_CALL++;    
-        if(COUNT_NUM_CALL == K){
-            cout << unsorted[i];
-        }        
         tmp[t++] = unsorted[j++];
     }
 
     i = begin;
     t = 0;
-    while(i <= end)
+    while(i <= end){
+        COUNT_NUM_CALL++;
+        if(COUNT_NUM_CALL == K){
+            cout << tmp[t];
+        }  
         unsorted[i++] = tmp[t++] ;
+    }
 }
 
 void merge_sort(vector<int>& unsorted,int begin, int end){
@@ -79,6 +63,7 @@ int main(){
     }
     
     merge_sort(A,0,A.size()-1);
+
     if(COUNT_NUM_CALL < K)
         cout << -1;
 }
