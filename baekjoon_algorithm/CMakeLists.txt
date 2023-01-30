@@ -6,4 +6,4 @@ project(boj_algorithm
 set(CMAKE_BUILD_TYPE Debug)
 set(CMAKE_BUILD_TYPE RelWithDebInfo)
 
-add_executable(BOJ.out DP/1904.cpp)
+add_executable(BOJ.out union_find_disjoint_set/1717.cpp)
