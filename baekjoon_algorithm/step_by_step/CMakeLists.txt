@@ -5,5 +5,5 @@ project(step_by_step
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-add_executable(step_by_step.out "four_althimetic/11382.cpp")
+add_executable(step_by_step.out "step2_conditional/2480.cpp")
  
