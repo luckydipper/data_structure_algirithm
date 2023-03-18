@@ -11,4 +11,4 @@ set(CMAKE_BUILD_TYPE Debug)
 
 #set(CMAKE_CXX_CLANG_TIDY "clang-tidy;-checks=*")
 
-add_executable(BOJ.out BFS/1926.cpp)
+add_executable(BOJ.out BFS/4179.cpp)

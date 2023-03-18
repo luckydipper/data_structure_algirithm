@@ -45,11 +45,7 @@ int main(){
             drawing[i][j] = tmp1;
         }
     }
-    // for(auto tmp_ : drawing){
-    //     for(auto tmp2 : tmp_)
-    //         cout << tmp2;
-    //     cout << "\n";
-    // }
+
 
     //count num of pop
     int num_drawings=0, broadest_width=0;
