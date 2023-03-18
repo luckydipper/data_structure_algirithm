@@ -5,5 +5,5 @@ project(step_by_step
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-add_executable(step_by_step.out "step3_iteration/2438.cpp")
+add_executable(step_by_step.out "step4_1d_array/10807.cpp")
  
