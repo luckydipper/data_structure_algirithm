@@ -11,4 +11,4 @@ set(CMAKE_BUILD_TYPE Debug)
 
 #set(CMAKE_CXX_CLANG_TIDY "clang-tidy;-checks=*")
 
-add_executable(BOJ.out path_planning/1753_naive.cpp)
+add_executable(BOJ.out path_planning/11404.cpp)
