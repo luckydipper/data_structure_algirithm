@@ -16,24 +16,19 @@ void update_placeable(int row, int col, bool with){
     is_used_descending[row - col + N -1] =with;
 }
 
-int result;
+int result=0;
 void countNQueen(int row, int col){
-    if( row == N-1){
-        for(int i = 0; i < N; i++)
-            if(!is_used_col[i])
-                result++; 
+    if( row == N ){
+        result++;
         return;
     }
-    if(is_used_col[col]) return;
-    if(is_used_ascending[row + col]) return;
-    if(is_used_descending[row - col + N -1]) return;
-    
-    for(int i = 0; i < N;  i++){
-        for(int j = 0; j < N; j++){
-            update_placeable(i, j, true);
-            countNQueen(i,j);
-            update_placeable(i, j, false);
-        }
+    for(int j = 0; j < N; j++){
+        if(is_used_col[j]) continue;
+        if(is_used_ascending[row + j]) continue;
+        if(is_used_descending[row - j + N -1]) continue;
+        update_placeable(row, j, true);
+        countNQueen(row+1,j);
+        update_placeable(row, j, false);
     }
 }
 
