@@ -2,7 +2,6 @@
 using namespace std;
 int N, M;
 int scanning_place[9][9];
-vector<pair<int,int>> position_of_camera[6];
 
 enum D{
     l,
@@ -114,26 +113,23 @@ void occupyByCamera(int camera_num, int x, int y, D direction, int with){
     }
 }
 
-
-// void Homogenious(int n, int m){
-//     if(chosen.size() == m){
-//         all_case.push_back(chosen);
-//         return;
-//     }
-//     int smallest = chosen.empty() ? 0 : chosen.back();
-//     for(int i = smallest; i < n; i++){
-//         chosen.push_back(i);
-//         Homogenious(n, m);
-//         chosen.pop_back();
-//     }
-// }
-
 // permutation with repeat 
 vector<int> chosen;
 vector<vector<int>> all_case;
+int min_invisable = 8 * 8;
+vector<tuple<int,int,int>> camera_array;
+
 void generate_all_case(int the_num_camera){
     if(chosen.size() == the_num_camera){
-        all_case.push_back(chosen);
+        for(int i = 0; i < chosen.size(); i++)
+            occupyByCamera(get<2> (camera_array[i]), get<0>(camera_array[i]),get<1>(camera_array[i]), FOUR_DIRECTION[chosen[i]], -1);
+        int invisable_temp = countInvisable();
+
+        if(min_invisable > invisable_temp)
+            min_invisable = invisable_temp;
+
+        for(int i = 0; i < chosen.size(); i++) // cammera array size와 direction_set의 크기가 같다.
+            occupyByCamera(get<2> (camera_array[i]), get<0>(camera_array[i]),get<1>(camera_array[i]), FOUR_DIRECTION[chosen[i]], 0);
         return;
     }
     for(int i = 0; i < the_num_camera; i++){
@@ -150,7 +146,7 @@ int main(){
 
     cin >> N >> M;
     int the_num_camera = 0;
-    vector<tuple<int,int,int>> camera_array;
+
 
     for(int i = 1; i <= N; i++){
         for(int j = 1; j <= M; j++){
@@ -160,28 +156,11 @@ int main(){
             scanning_place[i][j] = occupied;
             if(occupied == 6) continue;
             the_num_camera++;
-            position_of_camera[occupied].push_back({i,j});
             camera_array.push_back(make_tuple(i, j, occupied));
         }
     }
     
     generate_all_case(the_num_camera);
-
-    int min_invisable = N * M;
-    // camera를 graph에서 vec<<x,y>, 종류> 로  
-    for(const vector<int> &direction_set : all_case){
-
-        for(int i = 0; i < direction_set.size(); i++) // cammera array size와 direction_set의 크기가 같다.
-            occupyByCamera(get<2> (camera_array[i]), get<0>(camera_array[i]),get<1>(camera_array[i]), FOUR_DIRECTION[direction_set[i]], -1);
-        
-        int invisable_temp = countInvisable();
-        if(min_invisable > invisable_temp)
-            min_invisable = invisable_temp;
-
-        for(int i = 0; i < direction_set.size(); i++) // cammera array size와 direction_set의 크기가 같다.
-            occupyByCamera(get<2> (camera_array[i]), get<0>(camera_array[i]),get<1>(camera_array[i]), FOUR_DIRECTION[direction_set[i]], 0);
-
-    }
 
     cout << min_invisable;
     return 0;
