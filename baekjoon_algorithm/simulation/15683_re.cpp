@@ -30,7 +30,7 @@ int countInvisable(){
 }
 
 //if occupied -1 
-int occupySeenPlace(D direction, int x, int y, int with){
+int occupySeenPlace(const D& direction, int x, int y, int with){
     int count_oc = 0;
     if(direction == D::l){
         while(--y >= 1 ){
@@ -67,7 +67,7 @@ int occupySeenPlace(D direction, int x, int y, int with){
     return count_oc;
 }
 
-void occupyByCamera(int camera_num, int x, int y, D direction, int with){
+void occupyByCamera(int camera_num, int x, int y, const D& direction, int with){
     //camera1
     occupySeenPlace(direction, x, y, with);
     if(camera_num == 2){
@@ -140,6 +140,19 @@ void generate_all_case(int the_num_camera){
 }
 
 
+
+void repeatable_permutation_by_bit_mask(int the_num_camera){
+    //5진수 
+    for(int i = 0; i < 5*(pow(5,the_num_camera)-1)/4; i++){
+        for(int j = 0; j < the_num_camera; j++){
+            cout << (int)(i/pow(5,j)) % 5 << " ";
+        }
+        cout << "\n";
+    }
+}
+
+
+
 int main(){
     cin.tie(nullptr);
     ios_base::sync_with_stdio(false);
@@ -160,8 +173,9 @@ int main(){
         }
     }
     
-    generate_all_case(the_num_camera);
-
+    //generate_all_case(the_num_camera);
+    repeatable_permutation_by_bit_mask(the_num_camera);
+    
     cout << min_invisable;
     return 0;
 }
