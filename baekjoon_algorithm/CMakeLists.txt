@@ -11,4 +11,6 @@ set(CMAKE_BUILD_TYPE Debug)
 
 #set(CMAKE_CXX_CLANG_TIDY "clang-tidy;-checks=*")
 
-add_executable(BOJ.out back_tracking/9663.cpp)
+#set(CMAKE_CXX_FLAGS "-g -fsanitize=address")
+
+add_executable(BOJ.out simulation/15683_re.cpp)
