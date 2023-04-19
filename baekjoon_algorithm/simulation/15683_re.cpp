@@ -140,14 +140,23 @@ void generate_all_case(int the_num_camera){
 }
 
 
-
 void repeatable_permutation_by_bit_mask(int the_num_camera){
-    //5진수 
-    for(int i = 0; i < 5*(pow(5,the_num_camera)-1)/4; i++){
+    // 4진수 
+    for(int i = 0; i < 4*((pow(4,the_num_camera)-1)/3); i++){
         for(int j = 0; j < the_num_camera; j++){
-            cout << (int)(i/pow(5,j)) % 5 << " ";
+            int d = (int)(i/pow(4,j)) % 4;
+            occupyByCamera(get<2> (camera_array[j]), get<0>(camera_array[j]),get<1>(camera_array[j]), FOUR_DIRECTION[d], -1);
         }
-        cout << "\n";
+
+        int invisable_temp = countInvisable();
+
+        if(min_invisable > invisable_temp)
+            min_invisable = invisable_temp;
+
+        for(int j = 0; j < the_num_camera; j++){
+            int d = (int)(i/pow(4,j)) % 4;
+            occupyByCamera(get<2> (camera_array[j]), get<0>(camera_array[j]),get<1>(camera_array[j]), FOUR_DIRECTION[d], 0);
+        }
     }
 }
 
