@@ -142,6 +142,7 @@ void generate_all_case(int the_num_camera){
 
 void repeatable_permutation_by_bit_mask(int the_num_camera){
     // 4진수 
+    min_invisable = countInvisable(); // for 1 1 0 case
     for(int i = 0; i < 4*((pow(4,the_num_camera)-1)/3); i++){
         for(int j = 0; j < the_num_camera; j++){
             int d = (int)(i/pow(4,j)) % 4;
