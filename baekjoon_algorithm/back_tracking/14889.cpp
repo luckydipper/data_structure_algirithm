@@ -4,36 +4,40 @@ using namespace std;
 int N;
 int ability_map[21][21];
 vector<int> ability_arr;
-vector<int> is_used[21];
 int result_min = 987654321;
+//permutation으로 구현 해보자.
 
-// vector<vector<int>> selecteds;
-// vector<int> selected;
-// void selectOneORZero(int N){
-//     if(selected.size() == M){
-//         selecteds.push_back(selected);
-//     }
-//     for(int i = 0; i < N; i++){
-//         selected.push_back(0)
-//     }
-// }
+bool is_picked[21];
+vector<int> picked_index;
+vector<int> sum_partial;
 
-vector<vector<int>> spanZeroOneMatrix(int num){
-    vector<vector<int>> result;
-    for(int i = 0; i <= num; i++ ){
-        vector<int> tmp(num);
-        for(int j = 0; j < i; j++)
-            tmp[j] = 1;
-        result.push_back(tmp);
+//combination 이네
+void update_sum_partial(int n, int m){
+    if(picked_index.size() == m){
+        int result = 0;
+        for(int idx: picked_index){
+            cout << idx << " ";
+            result += ability_arr[idx];
+        }
+        cout << "\n";
+        sum_partial.push_back(result);
+        return;
     }
-    return result;
+    int smallest = picked_index.empty() ? 1 : picked_index.back()+ 1;
+
+    for(int i = smallest; i < n; i++){
+        picked_index.push_back(i);
+        update_sum_partial(n, m);
+        picked_index.pop_back();
+    }
 }
+
 int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(nullptr);
 
     cin >> N;
-
+    
     for(int i = 0; i < N; i++)
         for(int j = 0; j < N; j++)
             cin >> ability_map[i][j];
@@ -42,49 +46,15 @@ int main(){
         for(int j = i+1; j < N; j++)
             ability_arr.push_back(ability_map[i][j] + ability_map[j][i]);
 
-
-    sort(ability_arr.begin(),ability_arr.end());
-
-    for(int i = 0; i <= ability_arr.size(); i++ ){
-        vector<int> tmp(ability_arr.size());
-        //fill(tmp.begin(),tmp.end(),0)
-        for(int j = 0; j < i; j++)
-            tmp[j] = 1;
-        
-        is_used[i] = tmp;
+    sort(ability_arr.begin(), ability_arr.end());
+    
+    for(int i = 0; i < ability_arr.size(); i++){
+        update_sum_partial(ability_arr.size(), i);
     }
 
+    for(int i : sum_partial)
+        cout << i << " ";
+    cout << "\n";
+    sort(sum_partial.begin(), sum_partial.end());
 
-    for(int num = 2; num <= ability_arr.size(); num++){
-        do{
-            vector<int> picked_person;
-            for(int i = 0; i < ability_arr.size(); i++){
-                if(is_used[num][i] == 1)
-                    picked_person.push_back(ability_arr[i]);
-            }
-
-            vector<vector<int>> start_or_rink = spanZeroOneMatrix(picked_person.size());
-            for(int num_start = 1; num_start <= picked_person.size(); num_start++){
-                int zero = 0, one = 0;
-                do{
-                    for(int i = 0; i < start_or_rink.size();i++){
-                        if(start_or_rink[num_start][i] == 1)
-                            one += picked_person[i];
-                        else if(start_or_rink[num_start][i] == 0)
-                            zero += picked_person[i];
-                    }
-                    if(result_min  > abs(one - zero)){
-                        for(int i : picked_person)
-                            cout << i << " ";
-                        cout << "\n";
-                        for(int i: start_or_rink[num_start])
-                            cout << i;
-                        cout << "\n\n";
-                        result_min = abs(one - zero); 
-                    }
-                }while(prev_permutation(start_or_rink[num_start].begin(), start_or_rink[num_start].end() ));
-            }
-        }while(prev_permutation(is_used[num].begin(), is_used[num].end() ));
-    }
-    cout << result_min;
 }
