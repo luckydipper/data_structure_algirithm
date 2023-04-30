@@ -13,4 +13,4 @@ set(CMAKE_BUILD_TYPE Debug)
 
 #set(CMAKE_CXX_FLAGS "-g -fsanitize=address")
 
-add_executable(BOJ.out back_tracking/14888.cpp)
+add_executable(BOJ.out back_tracking/1182.cpp)
