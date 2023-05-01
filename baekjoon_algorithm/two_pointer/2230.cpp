@@ -2,31 +2,34 @@
 #include<bits/stdc++.h>
 using namespace std;
 int N, M;
-set<int> domain;
+int arr[100001];
+int smallest_result = 2100000000;
 
 int main(){
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
     cin >> N >> M;
-    //vector<int> domain; // list로 넣으면서 sorting?  // bst// avl tree 
-
-    while(N--){
-        int tmp; 
-        cin >> tmp;
-        domain.insert(tmp);
+    for(int i = 0; i< N; i++){
+        cin >> arr[i];
     }
-    vector<int> p_sum;
+    sort(arr, arr+N);
 
-    auto start = domain.begin(), end_ = domain.end();
- 
-    //numeric, 뒤에 multiplies<int>()도 가능.
-    partial_sum(domain.begin(), domain.end(), p_sum.begin());
+    int* begin_ptr = arr;
+    int* end_ptr = arr;
 
-    int min_sub = 1000000001;
-    for(int i : p_sum)
-        cout << i <<" ";
-    cout << "\n";
-    for(int i = 0; i<p_sum.size()-1; i++){
-        if( M <= p_sum[i+1] - p_sum[i] < min_sub)
-            min_sub = p_sum[i] - p_sum[i+1];
+    while(end_ptr != (arr+N) && begin_ptr != (arr+N)){
+        int offset = *end_ptr -*begin_ptr;
+        if( offset > M){
+            if(smallest_result > offset)
+                smallest_result = offset;
+            begin_ptr++;
+        }
+        else if( offset < M)
+            end_ptr++;
+        else if( offset == M){
+            cout << M;
+            return 0;
+        }   
     }
-    cout << min_sub;
+    cout << smallest_result;
 }
