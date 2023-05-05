@@ -13,4 +13,4 @@ set(CMAKE_BUILD_TYPE Debug)
 
 #set(CMAKE_CXX_FLAGS "-g -fsanitize=address")
 
-add_executable(BOJ.out MST/9372.cpp)
+add_executable(BOJ.out MST/1197.cpp)
