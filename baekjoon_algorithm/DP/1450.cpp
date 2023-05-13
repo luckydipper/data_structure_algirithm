@@ -1,52 +1,58 @@
+// Meet In The Middle : brute force를 쓸 수 없을 만큼 클 때
+// 절반 나눠서 찾는 기술
 #include <bits/stdc++.h>
 using namespace std;
-int N, C, result;
-int arr[31];
-//int cache[31][1000000001]; //index , capacity cache[31][1000000001]
-// memory를 너무 많이 쓴다. 
+using ll = long long;
 
-int consider(int index, int capacity){
-    if(index == 1){
-        if(arr[index] > capacity)
-            return 1; // 아무 것도 선택하지 않는 경우의 수 
-        else
-            return 2; // 아무것도 선택하지 않거나 한개 선택하는 경우의 수 
+int N, C;
+int arr[31];
+
+//back tracking 보단 dfs로 구현하는 것이 powerset 구하기 쉬움.
+vector<ll> picked;
+void combination_index(vector<ll>& sum_super_set, int begin_index, int end_index, int to_pick_size){
+    if(picked.size() == to_pick_size){
+        ll result = 0;
+        for(int i : picked)
+            result += arr[begin_index+i];
+        sum_super_set.push_back(result);
+        return;
     }
-    // index 물질을 가져가거나 
-    if(arr[index] > capacity){
-        // if(cache[index-1][capacity])
-        //     return cache[index-1][capacity] + 1;
-        // cache[index-1][capacity] = consider(index-1, capacity);
-        return consider(index-1, capacity);
-    }
-    else{
-        
-        // if(cache[index-1][capacity] == -1)
-        //     cache[index-1][capacity] = consider(index-1, capacity);
-        // if(cache[index-1][capacity-arr[index]] == -1)
-        //     cache[index-1][capacity-arr[index]] = consider(index-1, capacity-arr[index]);
-        
-        return consider(index-1, capacity) + consider(index-1, capacity-arr[index]) ;
+    int smallest = picked.empty() ? 0 : picked.back() + 1;
+    for(int i = smallest; i < end_index-begin_index; i++){
+        picked.push_back(i);
+        combination_index(sum_super_set,begin_index, end_index, to_pick_size);
+        picked.pop_back();
     }
 }
 
+vector<ll> spanArrBeginEnd(int begin, int end){
+    vector<ll> sum_super_set;
+    for(int i = 0; i <= end - begin; i++){
+        picked.clear();
+        combination_index(sum_super_set, begin,end, i);
+    }
+    return sum_super_set;
+}
 
 int main(){
     cin >> N >> C;
-    for(int i = 1; i <= N; i++)
+
+    for(int i = 0; i < N; i++)
         cin >> arr[i];
-    //sort(arr, arr+N);
-    //int** cache(new int* [31]);  //unique_ptr<int>
-    // for(int i = 0 ; i < 31; i++)
-    //     cache[i] = new int[1000000000];
-    
-    // for(int i =0; i < 31; i++){
-    //     fill(cache[i], cache[i]+1000000000, -1);
-    // }
+    vector<ll> front_case = spanArrBeginEnd(0, N/2);
+    vector<ll> back_case = spanArrBeginEnd(N/2, N);
 
-    cout << consider(N, C);
-
-    // for(int i = 0 ; i < 31; i++)
-    //     delete[] cache[i];
-    // delete[] cache;
+    sort(back_case.begin(), back_case.end());
+    int result = 0;
+    for(ll f : front_case){
+        auto end = upper_bound(back_case.begin(), back_case.end(), C-f);
+        result += end - back_case.begin();
+    }
+    // for(int f : front_case)
+    //     cout << f << " ";
+    // cout << "\n";
+    // for(int b : back_case)
+    //     cout << b << " ";
+    // cout << "\n---------------------\n";
+    cout << result;
 }
