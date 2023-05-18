@@ -3,12 +3,10 @@ using namespace std;
 int N;
 int arr[301];
 int cache[301][3];
+const int INF = -1e6;
 
-
-// i번째에 1을 j번 연속 사용했을 때, i+1 ~ N까지 최대 점수.
-// i think. -> 미래에 관한 값을 return 해야함.
+// i번째에 1을 j번 연속 사용했을 때, i ~ N까지 최대 점수.
 int max_score(int i, int j){
-    //cout << "i : " << i << " j : " << j << "\n";
     if(j >= 3 || i > N)
         return 0;
 
@@ -17,7 +15,8 @@ int max_score(int i, int j){
     if(ret != -1)
         return ret;
 
-    ret = arr[i] + max(max_score(i+1, j+1), max_score(i+2, 0)); 
+    // max_score(i+2, 0)이 아니다.
+    ret = arr[i] + max(max_score(i+1, j+1), max_score(i+2, 1)); 
     return ret;
 }
 
@@ -30,10 +29,4 @@ int main(){
         cin >> arr[i];
 
     cout << max_score(0,0); //max(max_score(1,1), max_score(2,0));
-
-    // for(int i = 1; i <= N; i++){
-    //     for(int j = 0; j < 3; j++)
-    //         cout << cache[i][j] << " ";
-    //     cout << "\n";
-    // }
 }
