@@ -14,4 +14,4 @@ set(CMAKE_BUILD_TYPE Debug)
 #set(CMAKE_CXX_FLAGS "-g -fsanitize=address")
 set(CMAKE_CXX_FLAGS "-fconcepts")
 
-add_executable(BOJ.out DP/2156.cpp)
+add_executable(BOJ.out DP/11053.cpp)
