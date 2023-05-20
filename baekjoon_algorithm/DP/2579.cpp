@@ -13,8 +13,9 @@ int max_score(int i){
     ll& ret = cache[i];
     if(ret != -1)  return ret;
     
-    // i의 크기에 따라서 i를 포함할지 안 안할지 달라짐.
-    return ret = arr[i] + max(max_score(i-2), max_score(i-1));
+    // max_score(i-2)과 max_score(i-1) 비교시,
+    // -1만 계속 선택할 수 있음.
+    return ret = arr[i] + max(max_score(i-2), arr[i-1] + max_score(i-3));
 }
 
 int main(){
