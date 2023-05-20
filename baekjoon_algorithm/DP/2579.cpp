@@ -1,32 +1,31 @@
 #include <bits/stdc++.h>
 using namespace std;
+using ll = long long;
 int N;
 int arr[301];
-int cache[301][3];
-const int INF = -1e6;
+ll cache[301];
 
-// i번째에 1을 j번 연속 사용했을 때, i ~ N까지 최대 점수.
-int max_score(int i, int j){
-    if(j >= 3 || i > N)
-        return 0;
+// i번째 원소를 마지막으로 선택한 score의 최대값.
+int max_score(int i){
+    if(i <= 1)
+        return arr[i];
 
-    int &ret = cache[i][j]; // j까지 caching 해야 하나?
+    ll& ret = cache[i];
+    if(ret != -1)  return ret;
     
-    if(ret != -1)
-        return ret;
-
-    // max_score(i+2, 0)이 아니다.
-    ret = arr[i] + max(max_score(i+1, j+1), max_score(i+2, 1)); 
-    return ret;
+    // i의 크기에 따라서 i를 포함할지 안 안할지 달라짐.
+    return ret = arr[i] + max(max_score(i-2), max_score(i-1));
 }
 
 int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(nullptr);
-    cin >> N;
     memset(cache, -1, sizeof(cache));
+
+    cin >> N;    
     for(int i = 1; i <= N; i++)
         cin >> arr[i];
 
-    cout << max_score(0,0); //max(max_score(1,1), max_score(2,0));
+    cout << max_score(N); //max(max_score(1,1), max_score(2,0));
+
 }
