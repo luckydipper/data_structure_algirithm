@@ -12,6 +12,6 @@ set(CMAKE_BUILD_TYPE Debug)
 #set(CMAKE_CXX_CLANG_TIDY "clang-tidy;-checks=*")
 
 #set(CMAKE_CXX_FLAGS "-g -fsanitize=address")
-set(CMAKE_CXX_FLAGS "-fconcepts")
+#set(CMAKE_CXX_FLAGS "-fconcepts")
 
-add_executable(BOJ.out DP/11053.cpp)
+add_executable(BOJ.out DP/24416.cpp)
