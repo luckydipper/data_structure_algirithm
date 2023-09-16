@@ -1,9 +1,15 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 int arr[9][9];
 vector<pair<int,int>> need_to_find;
-vector<bool> is_founded;
+//vector<bool> is_founded;
+// is found 말고 0의 갯수로 가는 것이 더 효과적임. 
+// is found 는 안에 문자열이 적혔는지로 대체.
+// D&C나 recursion 할 때, index를 넘기는 것이 효과적임. 
+// const vector<pair<int,int>>& need_to_find를 parameter로 넘기면 안될 듯.
+int num_zero;
 
 bool isCompatableSquare(int y, int x){
     int y_ = y/3 * 3, x_ = x/3 * 3;
@@ -38,54 +44,53 @@ bool isCompatableCol(int y, int x){
     return true;
 }
 
-
+// const vector<pair<int,int>>& need_to_find
+// found out을 sequential 하게 찾지 않고 앞부터 반복해서 망하는듯.
 void solveUnknown(const vector<pair<int,int>>& need_to_find){
-    // if 다 found 되면 
+    if(num_zero == 0){
+        for(int i = 0; i < 9; i++){
+            for(int j = 0; j <9; j++)
+                cout << arr[i][j] << " ";
+        cout << "\n";
+        }
+        exit(0);
+    }
 
-    for(int i = 0; i<need_to_find.size(); i++){
-        if(is_founded[i])
-            continue;
+    for(int i = 0; i < need_to_find.size(); i++){
         int y = need_to_find[i].first;
         int x = need_to_find[i].second;
+        if(arr[y][x] != 0)
+            continue;
+        num_zero--;
         for(int trial = 1; trial <= 9; trial++){
-            is_founded[i] = true;
             arr[y][x] = trial;
-            if(!isCompatableSquare(y,x) || !isCompatableRow(y,x) || !isCompatableCol(y,x)){
-                is_founded[i] = false;
-                arr[y][x] = 0;
-                continue;//return; // 넣어봤더니, 잘못 됐네요. continue가 아니라, 다 스택에서 빼. return이나 continue가 아님. 
-            }
-            solveUnknown(need_to_find); // 맞으면 계속 찾아.
-            is_founded[i] = false;
+            if(isCompatableSquare(y,x) && isCompatableRow(y,x) && isCompatableCol(y,x))
+                solveUnknown(need_to_find); // 에러가 없으면 다음 것도 찾아 
             arr[y][x] = 0;
         }
+        num_zero++;
     }
-    // 다 찾아진 경우
-    for(int i = 0; i < 9; i++){
-        for(int j = 0; j < 9; j++)
-            cout << arr[i][j] << " ";
-        cout << "\n";
-    }
-    exit(0);
-    return ;
+
+
 }
 
 int main(){
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
 
     for(int i = 0; i < 9; i++){
         for(int j = 0; j < 9; j++){  
             cin >> arr[i][j];
-            if(arr[i][j] == 0)
+            if(arr[i][j] == 0){
                 need_to_find.push_back({i,j});
+                num_zero++;
+            }
         }
     }
-    // for(const auto& a : need_to_find)
-    //     cout << a.first << ", " << a.second << "\n";
+
     int unknown_size = need_to_find.size();
-    is_founded.resize(unknown_size);
-
-
+    //is_founded.resize(unknown_size);
     solveUnknown(need_to_find);
-    // print arr
+    
 
 }
