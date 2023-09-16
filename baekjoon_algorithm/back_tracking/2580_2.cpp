@@ -16,7 +16,7 @@ bool isCompatableSquare(int y, int x){
     for(int i = 0; i < 3; i++){
         for(int j = 0; j < 3; j++){
             if(y_ + i == y && x_ + j == x)
-                    continue;
+                continue;
             if(arr[y_ + i][x_ + j] == arr[y][x])
                 return false;
         }
@@ -46,7 +46,7 @@ bool isCompatableCol(int y, int x){
 
 // const vector<pair<int,int>>& need_to_find
 // found out을 sequential 하게 찾지 않고 앞부터 반복해서 망하는듯.
-void solveUnknown(const vector<pair<int,int>>& need_to_find){
+void solveUnknown(int next_index){
     if(num_zero == 0){
         for(int i = 0; i < 9; i++){
             for(int j = 0; j <9; j++)
@@ -55,23 +55,18 @@ void solveUnknown(const vector<pair<int,int>>& need_to_find){
         }
         exit(0);
     }
-
-    for(int i = 0; i < need_to_find.size(); i++){
-        int y = need_to_find[i].first;
-        int x = need_to_find[i].second;
-        if(arr[y][x] != 0)
-            continue;
+    int y = need_to_find[next_index].first;
+    int x = need_to_find[next_index].second;
+    if(arr[y][x] != 0)
+        return;
+    for(int trial = 1; trial <= 9; trial++){
+        arr[y][x] = trial;
         num_zero--;
-        for(int trial = 1; trial <= 9; trial++){
-            arr[y][x] = trial;
-            if(isCompatableSquare(y,x) && isCompatableRow(y,x) && isCompatableCol(y,x))
-                solveUnknown(need_to_find); // 에러가 없으면 다음 것도 찾아 
-            arr[y][x] = 0;
-        }
+        if(isCompatableSquare(y,x) && isCompatableRow(y,x) && isCompatableCol(y,x))
+            solveUnknown((next_index+1) %need_to_find.size()); // 에러가 없으면 다음 것도 찾아 
+        arr[y][x] = 0;
         num_zero++;
     }
-
-
 }
 
 int main(){
@@ -89,8 +84,5 @@ int main(){
     }
 
     int unknown_size = need_to_find.size();
-    //is_founded.resize(unknown_size);
-    solveUnknown(need_to_find);
-    
-
+    solveUnknown(0);
 }

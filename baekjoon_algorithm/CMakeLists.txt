@@ -14,4 +14,4 @@ set(CMAKE_BUILD_TYPE Debug)
 #set(CMAKE_CXX_FLAGS "-g -fsanitize=address")
 #set(CMAKE_CXX_FLAGS "-fconcepts")
 
-add_executable(BOJ.out devide_and_conquer/1780.cpp)
+add_executable(BOJ.out back_tracking/2580_2.cpp)
