@@ -14,4 +14,4 @@ set(CMAKE_BUILD_TYPE Debug)
 #set(CMAKE_CXX_FLAGS "-g -fsanitize=address")
 #set(CMAKE_CXX_FLAGS "-fconcepts")
 
-add_executable(BOJ.out recursion/simple_merge_sort.cpp)
+add_executable(BOJ.out BFS/2606.cpp)
