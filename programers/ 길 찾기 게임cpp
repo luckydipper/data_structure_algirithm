@@ -1,0 +1,160 @@
+// BST를 만들 때 New를 사용하자. stack memory를 이용해서 구현하려고 했다. 이런경우, parameter들이 call by value가 된다. 이때에는 parameter를 
+// pointer들을 call by reference로 받는 행위는 잘못 됀 것 아닌가?
+// BST 까진 찾았는데 stack으로 구현하려고 해서 망함.
+// set STL에는  여러 방향으로 travel하는 operation 없다. 
+#include <string>
+#include <vector>
+#include <bits/stdc++.h>
+
+using namespace std;
+
+struct Node{
+    int x,y, idx;
+    Node(int y, int x, int idx):x(x),y(y),idx(idx){;};
+    Node* l=nullptr;
+    Node* r=nullptr;
+};
+
+struct Tree{
+    Node* _base_node = nullptr;
+    vector<int> f, b;
+    
+    ~Tree(){
+        free_all(_base_node);
+    }
+    
+    void free_all(Node* n){
+        if(n == nullptr)
+            return;
+        backward_impl(n->l);
+        backward_impl(n->r);
+        delete (n);
+    }
+    
+    void push(Node* n){
+        push_impl(n, _base_node);
+    }
+    
+    void push_impl(Node* n, Node* to){ // base node를 알아야 child node에 할당 가능하다. child node가 nullptr 일 때 할당하면 
+        if(to == nullptr){
+            to = n;
+            return;
+        }
+        // else if(to->x > n->x)
+        //     push_impl(n, to->l);
+        // else
+        //     push_impl(n, to->r);
+    }
+    
+    void forward(){ forward_impl(_base_node);}
+    void forward_impl(Node* n){
+        if(n == nullptr)
+            return;
+        f.push_back(n->idx);
+        forward_impl(n->l);
+        forward_impl(n->r);
+    }
+    void backward(){ backward_impl(_base_node);}
+    void backward_impl(Node* n){
+        if(n == nullptr)
+            return;
+        backward_impl(n->l);
+        backward_impl(n->r);
+        f.push_back(n->idx);
+    }
+};
+
+Tree t{};
+
+// pq, y 1st, x 2nd
+vector<vector<int>> solution(vector<vector<int>> nodeinfo) {
+    for(auto& node_ : nodeinfo)
+        swap(node_[0], node_[1]);
+    sort(nodeinfo.begin(), nodeinfo.end(), std::less());
+    reverse(nodeinfo.begin(), nodeinfo.end());
+    
+    for(int i = 1; i <= nodeinfo.size(); i++){
+        // Node n(nodeinfo[i][0], nodeinfo[i][1], i);
+        // Node* n_ptr = &n;
+        Node* n_ptr = new Node(nodeinfo[i][0], nodeinfo[i][1], i);
+        t.push(n_ptr);
+    }
+    cout << t._base_node;
+
+    // Node n(1, 1, 100);
+    // Node* n_ptr = &n;
+    // t.push(n_ptr);
+    t.forward();
+    t.backward();
+    
+    vector<vector<int>> answer = {t.f, t.b};
+    // for(auto& node_ : nodeinfo){   
+    //     cout << node_[0] << ", " << node_[1] << "\n";
+    // }
+    return answer;
+}
+// #include <iostream>
+// #include <vector>
+// #include <algorithm>
+
+// using namespace std;
+
+// struct Node{
+//     int x, y, idx;
+//     Node(int x, int y, int idx): x(x), y(y), idx(idx) {;}
+//     Node* l = nullptr;
+//     Node* r = nullptr;
+// };
+
+// struct Tree{
+//     Node* _base_node = nullptr;
+//     vector<int> f, b;
+    
+//     void push(Node* n){
+//         push_impl(n, _base_node);
+//     }
+    
+//     void push_impl(Node* n, Node*& to){
+//         if(to == nullptr){
+//             to = n;
+//             return;
+//         }
+//         else if(to->x > n->x)
+//             push_impl(n, to->l);
+//         else
+//             push_impl(n, to->r);
+//     }
+    
+//     void forward() { forward_impl(_base_node); }
+//     void forward_impl(Node* n){
+//         if(n == nullptr) return;
+//         f.push_back(n->idx);
+//         forward_impl(n->l);
+//         forward_impl(n->r);
+//     }
+    
+//     void backward() { backward_impl(_base_node); }
+//     void backward_impl(Node* n){
+//         if(n == nullptr) return;
+//         backward_impl(n->l);
+//         backward_impl(n->r);
+//         b.push_back(n->idx);
+//     }
+// };
+
+// vector<vector<int>> solution(vector<vector<int>> nodeinfo) {
+//     for(auto& node_ : nodeinfo)
+//         swap(node_[0], node_[1]);
+//     sort(nodeinfo.begin(), nodeinfo.end(), greater<>());
+    
+//     Tree t{};
+//     for(int i = 0; i < nodeinfo.size(); i++){
+//         Node* n = new Node(nodeinfo[i][0], nodeinfo[i][1], i + 1);
+//         t.push(n);
+//     }
+    
+//     t.forward();
+//     t.backward();
+    
+//     return {t.f, t.b};
+// }
