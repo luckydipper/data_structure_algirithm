@@ -3,25 +3,32 @@
 #include <string> 
 using namespace std;
 
+
 int main(){
     cin.tie(nullptr);
     ios_base::sync_with_stdio(false);
-    list<char> sentence;
-    list<char> tnt;
+    string sentence;
+    string tnt;
     
     char tmp = 0;
-    while(cin >> tmp){
-        sentence.push_back(tmp);
+    // while(cin >> tmp){
+    //     sentence.push_back(tmp);
+    // }
+    // while(cin >> tmp){
+    //     tnt.push_back(tmp);
+    // }
+    getline(cin, sentence);
+    getline(cin, tnt);
+    while(sentence.find(tnt) != string::npos){
+        while(sentence.find(tnt) != string::npos){
+            auto it = sentence.find(tnt);
+            sentence.erase(it, tnt.size());
+            //cout << sentence << "\n";
+        }
     }
-    while(cin >> tmp){
-        tnt.push_back(tmp);
-    }
-
-    list<char>::iterator suspect_start, suspect_end;
-    suspect_start = suspect_end = sentence.begin();
-    
-    for(int i = 0; i < sentence.size(); i++)
-        suspect_end++;
-    
+    if(sentence.empty())
+        cout << "FRULA";
+    else
+        cout << sentence;
     return 0;
 }
